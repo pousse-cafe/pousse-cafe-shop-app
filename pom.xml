@@ -4,7 +4,7 @@
     <parent>
         <groupId>org.pousse-cafe-framework</groupId>
         <artifactId>pousse-cafe</artifactId>
-        <version>0.10.0-SNAPSHOT</version>
+        <version>0.10.0</version>
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
@@ -88,4 +88,10 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
+
+    <scm>
+        <connection>scm:git:https://github.com/pousse-cafe/pousse-cafe-shop-app.git</connection>
+        <developerConnection>scm:git:ssh://git@github.com/pousse-cafe/pousse-cafe-shop-app.git</developerConnection>
+        <url>http://github.com/pousse-cafe/pousse-cafe-shop-app</url>
+    </scm>
 </project>
