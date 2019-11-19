@@ -1,38 +1,33 @@
 package poussecafe.shop;
 
-import org.springframework.context.annotation.Bean;
+import java.util.ArrayList;
+import java.util.List;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import poussecafe.environment.Bundle;
 import poussecafe.journal.Journal;
-import poussecafe.journal.JournalMessageConsumptionHandler;
 import poussecafe.messaging.internal.InternalMessaging;
 import poussecafe.runtime.MessagingAndStorage;
-import poussecafe.runtime.Runtime;
+import poussecafe.spring.RuntimeConfiguration;
 import poussecafe.spring.mongo.storage.SpringMongoDbStorage;
 
 @Configuration
 @ComponentScan(basePackages = { "poussecafe.spring" })
-public class AppConfiguration {
+public class AppConfiguration extends RuntimeConfiguration {
 
-    @Bean
-    public Runtime pousseCafeRuntime() {
+    @Override
+    protected List<Bundle> bundles() {
         MessagingAndStorage messagingAndStorage = new MessagingAndStorage(InternalMessaging.instance(),
                 SpringMongoDbStorage.instance());
-
-        Runtime context = new Runtime.Builder()
-            .messageConsumptionHandler(new JournalMessageConsumptionHandler())
-            .withBundle(Journal.configure()
-                    .defineThenImplement()
-                    .messagingAndStorage(messagingAndStorage)
-                    .build())
-            .withBundle(Shop.configure()
-                    .defineThenImplement()
-                    .messagingAndStorage(messagingAndStorage)
-                    .build())
-            .build();
-
-        context.start();
-
-        return context;
+        List<Bundle> bundles = new ArrayList<>();
+        bundles.add(Journal.configure()
+                .defineThenImplement()
+                .messagingAndStorage(messagingAndStorage)
+                .build());
+        bundles.add(Shop.configure()
+                .defineThenImplement()
+                .messagingAndStorage(messagingAndStorage)
+                .build());
+        return bundles;
     }
 }

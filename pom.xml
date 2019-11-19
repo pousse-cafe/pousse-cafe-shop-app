@@ -4,11 +4,12 @@
     <parent>
         <groupId>org.pousse-cafe-framework</groupId>
         <artifactId>pousse-cafe</artifactId>
-        <version>0.10.0</version>
+        <version>0.14.0-SNAPSHOT</version>
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
     <artifactId>pousse-cafe-shop-app</artifactId>
+    <version>0.11.0-SNAPSHOT</version>
 
     <name>Pousse-Café - Shop App</name>
 
@@ -34,23 +35,28 @@
         <dependency>
             <groupId>org.pousse-cafe-framework</groupId>
             <artifactId>pousse-cafe-core</artifactId>
-            <version>0.10.0-SNAPSHOT</version>
+            <version>0.14.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.pousse-cafe-framework</groupId>
-            <artifactId>pousse-cafe-journal-spring-mongo</artifactId>
-            <version>0.10.0-SNAPSHOT</version>
+            <artifactId>pousse-cafe-spring</artifactId>
+            <version>0.11.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.pousse-cafe-framework</groupId>
             <artifactId>pousse-cafe-spring-mongo</artifactId>
-            <version>0.10.0-SNAPSHOT</version>
+            <version>0.11.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.pousse-cafe-framework</groupId>
+            <artifactId>pousse-cafe-journal-spring-mongo</artifactId>
+            <version>0.10.0</version>
         </dependency>
 
         <dependency>
             <groupId>org.pousse-cafe-framework</groupId>
             <artifactId>pousse-cafe-test</artifactId>
-            <version>0.10.0-SNAPSHOT</version>
+            <version>0.14.0-SNAPSHOT</version>
             <scope>test</scope>
         </dependency>
         <dependency>
