@@ -6,3 +6,4 @@ target/
 /bin/
 .attach_pid*
 /application.properties
+.sts4-cache/
