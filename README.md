@@ -20,3 +20,7 @@ for the common application properties).
 3. Fetch the product:
 
     curl -X GET "http://localhost:8080/product/product-123"
+
+4. Add units to a product:
+
+    curl -X POST "http://localhost:8080/product/product-123/add-units" -d '{"units":"10"}' -H "Content-Type: application/json"

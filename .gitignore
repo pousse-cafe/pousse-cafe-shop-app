@@ -7,3 +7,5 @@ target/
 .attach_pid*
 /application.properties
 .sts4-cache/
+.idea
+*.iml
