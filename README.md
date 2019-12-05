@@ -24,3 +24,11 @@ for the common application properties).
 4. Add units to a product:
 
     curl -X POST "http://localhost:8080/product/product-123/add-units" -d '{"units":"10"}' -H "Content-Type: application/json"
+
+5. Create a customer:
+
+    curl -X POST "http://localhost:8080/customer" -d '{"id":"cust-456"}' -H "Content-Type: application/json"
+
+6. Fetch the customer:
+
+    curl -X GET "http://localhost:8080/customer/cust-456"
