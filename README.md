@@ -32,3 +32,19 @@ for the common application properties).
 6. Fetch the customer:
 
     curl -X GET "http://localhost:8080/customer/cust-456"
+
+7. Place an order:
+
+    curl -X POST "http://localhost:8080/placed-orders" -d '{"customerId":"cust-456", "reference":"my-ref", "productId":"product-123", "units":"5"}' -H "Content-Type: application/json"
+
+8. Fetch the order
+
+    curl -X GET "http://localhost:8080/orders/cust-456/my-ref/product-123"
+
+7. Settle the order:
+
+    curl -X POST "http://localhost:8080/settled-orders" -d '{"customerId":"cust-456", "reference":"my-ref", "productId":"product-123"}' -H "Content-Type: application/json"
+
+8. Ship the order:
+
+    curl -X POST "http://localhost:8080/shipped-orders" -d '{"customerId":"cust-456", "reference":"my-ref", "productId":"product-123"}' -H "Content-Type: application/json"
