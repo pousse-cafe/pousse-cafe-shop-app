@@ -1,4 +1,4 @@
-package poussecafe.shop;
+package poussecafe.shop.view;
 
 public class CreateProductView {
 

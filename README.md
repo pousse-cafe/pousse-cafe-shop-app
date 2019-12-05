@@ -20,3 +20,31 @@ for the common application properties).
 3. Fetch the product:
 
     curl -X GET "http://localhost:8080/product/product-123"
+
+4. Add units to a product:
+
+    curl -X POST "http://localhost:8080/product/product-123/add-units" -d '{"units":"10"}' -H "Content-Type: application/json"
+
+5. Create a customer:
+
+    curl -X POST "http://localhost:8080/customer" -d '{"id":"cust-456"}' -H "Content-Type: application/json"
+
+6. Fetch the customer:
+
+    curl -X GET "http://localhost:8080/customer/cust-456"
+
+7. Place an order:
+
+    curl -X POST "http://localhost:8080/placed-orders" -d '{"customerId":"cust-456", "reference":"my-ref", "productId":"product-123", "units":"5"}' -H "Content-Type: application/json"
+
+8. Fetch the order
+
+    curl -X GET "http://localhost:8080/orders/cust-456/my-ref/product-123"
+
+7. Settle the order:
+
+    curl -X POST "http://localhost:8080/settled-orders" -d '{"customerId":"cust-456", "reference":"my-ref", "productId":"product-123"}' -H "Content-Type: application/json"
+
+8. Ship the order:
+
+    curl -X POST "http://localhost:8080/shipped-orders" -d '{"customerId":"cust-456", "reference":"my-ref", "productId":"product-123"}' -H "Content-Type: application/json"
