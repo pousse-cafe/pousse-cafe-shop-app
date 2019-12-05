@@ -7,7 +7,7 @@ import poussecafe.journal.Journal;
 import poussecafe.messaging.Messaging;
 import poussecafe.runtime.Bundles;
 import poussecafe.runtime.MessagingAndStorage;
-import poussecafe.storage.Storage;
+import poussecafe.spring.mongo.storage.SpringMongoDbStorage;
 
 @Configuration
 @ComponentScan(basePackages = { "poussecafe.spring" })
@@ -15,7 +15,7 @@ public class AppConfiguration {
 
     @Bean
     protected Bundles bundles(Messaging messaging,
-            Storage storage) {
+            SpringMongoDbStorage storage) {
         MessagingAndStorage messagingAndStorage = new MessagingAndStorage(messaging, storage);
         return new Bundles.Builder()
             .withBundle(Journal.configure()
