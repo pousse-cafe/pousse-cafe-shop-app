@@ -2,6 +2,7 @@ package poussecafe.shop.domain;
 
 import poussecafe.attribute.Attribute;
 import poussecafe.discovery.Aggregate;
+import poussecafe.discovery.ProducesEvent;
 import poussecafe.domain.AggregateRoot;
 import poussecafe.domain.EntityAttributes;
 
@@ -13,8 +14,8 @@ public class Message extends AggregateRoot<MessageId, Message.Attributes> {
 
     /**
      * @process Messaging
-     * @event MessageCreated
      */
+    @ProducesEvent(MessageCreated.class)
     @Override
     public void onAdd() {
         MessageCreated event = newDomainEvent(MessageCreated.class);

@@ -3,6 +3,7 @@ package poussecafe.shop.domain;
 import poussecafe.attribute.Attribute;
 import poussecafe.discovery.Aggregate;
 import poussecafe.discovery.MessageListener;
+import poussecafe.discovery.ProducesEvent;
 import poussecafe.domain.AggregateRoot;
 import poussecafe.domain.DomainException;
 import poussecafe.domain.EntityAttributes;
@@ -30,10 +31,10 @@ public class Product extends AggregateRoot<ProductId, Product.Attributes> {
 
     /**
      * @process OrderPlacement
-     * @event OrderRejected
-     * @event OrderPlaced
      */
     @MessageListener(runner = PlaceOrderRunner.class)
+    @ProducesEvent(value = OrderRejected.class, required = false)
+    @ProducesEvent(value = OrderPlaced.class, required = false)
     public void placeOrder(PlaceOrder command) {
         int unitsAvailable = attributes().availableUnits().value();
         OrderDescription description = command.description().value();

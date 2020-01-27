@@ -3,6 +3,7 @@ package poussecafe.shop.domain;
 import poussecafe.attribute.Attribute;
 import poussecafe.discovery.Aggregate;
 import poussecafe.discovery.MessageListener;
+import poussecafe.discovery.ProducesEvent;
 import poussecafe.domain.AggregateRoot;
 import poussecafe.domain.EntityAttributes;
 import poussecafe.shop.command.SettleOrder;
@@ -17,9 +18,9 @@ public class Order extends AggregateRoot<OrderId, Order.Attributes> {
     /**
      * @process Messaging
      * @process OrderSettlement
-     * @event OrderSettled
      */
     @MessageListener(runner = SettleRunner.class)
+    @ProducesEvent(OrderSettled.class)
     public void settle(SettleOrder command) {
         OrderSettled event = newDomainEvent(OrderSettled.class);
         event.orderId().valueOf(attributes().identifier());
@@ -29,9 +30,9 @@ public class Order extends AggregateRoot<OrderId, Order.Attributes> {
     /**
      * @process OrderShippment
      * @process Messaging
-     * @event OrderReadyForShipping
      */
     @MessageListener(runner = ShipOrderRunner.class)
+    @ProducesEvent(OrderReadyForShipping.class)
     public void ship(ShipOrder command) {
         OrderReadyForShipping event = newDomainEvent(OrderReadyForShipping.class);
         event.orderId().valueOf(attributes().identifier());
@@ -40,8 +41,8 @@ public class Order extends AggregateRoot<OrderId, Order.Attributes> {
 
     /**
      * @process Messaging
-     * @event OrderCreated
      */
+    @ProducesEvent(OrderCreated.class)
     @Override
     public void onAdd() {
         OrderCreated event = newDomainEvent(OrderCreated.class);
