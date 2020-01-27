@@ -1,12 +1,12 @@
 package poussecafe.shop.domain;
 
-import poussecafe.discovery.SingleAggregateMessageListenerRunner;
+import poussecafe.listeners.AlwaysUpdateOneRunner;
 import poussecafe.shop.command.PlaceOrder;
 
-public class PlaceOrderRunner extends SingleAggregateMessageListenerRunner<PlaceOrder, ProductId, Product> {
+public class PlaceOrderRunner extends AlwaysUpdateOneRunner<PlaceOrder, ProductId, Product> {
 
     @Override
-    public ProductId targetAggregateId(PlaceOrder message) {
+    protected ProductId aggregateId(PlaceOrder message) {
         return message.productId().value();
     }
 }

@@ -12,10 +12,7 @@ import poussecafe.domain.EntityAttributes;
 )
 public class Message extends AggregateRoot<MessageId, Message.Attributes> {
 
-    /**
-     * @process Messaging
-     */
-    @ProducesEvent(MessageCreated.class)
+    @ProducesEvent(value = MessageCreated.class, consumedByExternal = "Communication System")
     @Override
     public void onAdd() {
         MessageCreated event = newDomainEvent(MessageCreated.class);

@@ -4,7 +4,7 @@
     <parent>
         <groupId>org.pousse-cafe-framework</groupId>
         <artifactId>pousse-cafe</artifactId>
-        <version>0.14.0</version>
+        <version>0.16.0-SNAPSHOT</version>
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
@@ -77,6 +77,29 @@
                         <goals>
                             <goal>repackage</goal>
                         </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.pousse-cafe-framework</groupId>
+                <artifactId>pousse-cafe-maven-plugin</artifactId>
+                <version>0.14.0-SNAPSHOT</version>
+                <configuration>
+                    <storageAdapters>
+                        <storageAdapter>internal</storageAdapter>
+                        <storageAdapter>spring-mongo</storageAdapter>
+                    </storageAdapters>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>generate-doc</goal>
+                        </goals>
+                        <phase>package</phase>
+                        <configuration>
+                            <domainName>Shop</domainName>
+                            <basePackage>poussecafe.shop</basePackage>
+                        </configuration>
                     </execution>
                 </executions>
             </plugin>

@@ -16,7 +16,6 @@ import poussecafe.shop.command.ShipOrder;
 public class Order extends AggregateRoot<OrderId, Order.Attributes> {
 
     /**
-     * @process Messaging
      * @process OrderSettlement
      */
     @MessageListener(runner = SettleRunner.class)
@@ -29,7 +28,6 @@ public class Order extends AggregateRoot<OrderId, Order.Attributes> {
 
     /**
      * @process OrderShippment
-     * @process Messaging
      */
     @MessageListener(runner = ShipOrderRunner.class)
     @ProducesEvent(OrderReadyForShipping.class)
@@ -39,9 +37,6 @@ public class Order extends AggregateRoot<OrderId, Order.Attributes> {
         emitDomainEvent(event);
     }
 
-    /**
-     * @process Messaging
-     */
     @ProducesEvent(OrderCreated.class)
     @Override
     public void onAdd() {
