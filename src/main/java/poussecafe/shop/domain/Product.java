@@ -9,6 +9,8 @@ import poussecafe.domain.DomainException;
 import poussecafe.domain.EntityAttributes;
 import poussecafe.shop.command.AddUnits;
 import poussecafe.shop.command.PlaceOrder;
+import poussecafe.shop.process.OrderPlacement;
+import poussecafe.shop.process.ProductManagement;
 
 @Aggregate(
   factory = ProductFactory.class,
@@ -16,10 +18,7 @@ import poussecafe.shop.command.PlaceOrder;
 )
 public class Product extends AggregateRoot<ProductId, Product.Attributes> {
 
-    /**
-     * @process ProductManagement
-     */
-    @MessageListener(runner = AddUnitsRunner.class)
+    @MessageListener(runner = AddUnitsRunner.class, processes = ProductManagement.class)
     public void addUnits(AddUnits command) {
         int units = command.units().value();
         if(units <= 0) {
@@ -29,10 +28,7 @@ public class Product extends AggregateRoot<ProductId, Product.Attributes> {
         attributes().totalUnits().value(attributes().totalUnits().value() + units);
     }
 
-    /**
-     * @process OrderPlacement
-     */
-    @MessageListener(runner = PlaceOrderRunner.class)
+    @MessageListener(runner = PlaceOrderRunner.class, processes = OrderPlacement.class)
     @ProducesEvent(value = OrderRejected.class, required = false)
     @ProducesEvent(value = OrderPlaced.class, required = false)
     public void placeOrder(PlaceOrder command) {

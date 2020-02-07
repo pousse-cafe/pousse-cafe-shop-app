@@ -3,13 +3,11 @@ package poussecafe.shop.domain;
 import java.util.UUID;
 import poussecafe.discovery.MessageListener;
 import poussecafe.domain.Factory;
+import poussecafe.shop.process.Messaging;
 
 public class MessageFactory extends Factory<MessageId, Message, Message.Attributes> {
 
-    /**
-     * @process Messaging
-     */
-    @MessageListener
+    @MessageListener(processes = Messaging.class)
     public Message buildMessage(OrderRejected event) {
         Message message = buildMessage(event.description().value().customerId());
         message.attributes().contentType().value(ContentType.ORDER_REJECTED);
@@ -22,30 +20,21 @@ public class MessageFactory extends Factory<MessageId, Message, Message.Attribut
         return message;
     }
 
-    /**
-     * @process Messaging
-     */
-    @MessageListener
+    @MessageListener(processes = Messaging.class)
     public Message buildMessage(OrderCreated event) {
         Message message = buildMessage(event.orderId().value().getCustomerId());
         message.attributes().contentType().value(ContentType.ORDER_READY_FOR_SETTLEMENT);
         return message;
     }
 
-    /**
-     * @process Messaging
-     */
-    @MessageListener
+    @MessageListener(processes = Messaging.class)
     public Message buildMessage(OrderSettled event) {
         Message message = buildMessage(event.orderId().value().getCustomerId());
         message.attributes().contentType().value(ContentType.ORDER_SETTLED);
         return message;
     }
 
-    /**
-     * @process Messaging
-     */
-    @MessageListener
+    @MessageListener(processes = Messaging.class)
     public Message buildMessage(OrderReadyForShipping event) {
         Message message = buildMessage(event.orderId().value().getCustomerId());
         message.attributes().contentType().value(ContentType.ORDER_READY_FOR_SHIPMENT);

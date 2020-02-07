@@ -8,34 +8,14 @@ import poussecafe.domain.AggregateRoot;
 import poussecafe.domain.EntityAttributes;
 import poussecafe.shop.command.SettleOrder;
 import poussecafe.shop.command.ShipOrder;
+import poussecafe.shop.process.OrderSettlement;
+import poussecafe.shop.process.OrderShippment;
 
 @Aggregate(
   factory = OrderFactory.class,
   repository = OrderRepository.class
 )
 public class Order extends AggregateRoot<OrderId, Order.Attributes> {
-
-    /**
-     * @process OrderSettlement
-     */
-    @MessageListener(runner = SettleRunner.class)
-    @ProducesEvent(OrderSettled.class)
-    public void settle(SettleOrder command) {
-        OrderSettled event = newDomainEvent(OrderSettled.class);
-        event.orderId().valueOf(attributes().identifier());
-        emitDomainEvent(event);
-    }
-
-    /**
-     * @process OrderShippment
-     */
-    @MessageListener(runner = ShipOrderRunner.class)
-    @ProducesEvent(OrderReadyForShipping.class)
-    public void ship(ShipOrder command) {
-        OrderReadyForShipping event = newDomainEvent(OrderReadyForShipping.class);
-        event.orderId().valueOf(attributes().identifier());
-        emitDomainEvent(event);
-    }
 
     @ProducesEvent(OrderCreated.class)
     @Override
@@ -45,9 +25,24 @@ public class Order extends AggregateRoot<OrderId, Order.Attributes> {
         emitDomainEvent(event);
     }
 
+    @MessageListener(runner = SettleRunner.class, processes = OrderSettlement.class)
+    @ProducesEvent(OrderSettled.class)
+    public void settle(SettleOrder command) {
+        OrderSettled event = newDomainEvent(OrderSettled.class);
+        event.orderId().valueOf(attributes().identifier());
+        emitDomainEvent(event);
+    }
+
+    @MessageListener(runner = ShipOrderRunner.class, processes = OrderShippment.class)
+    @ProducesEvent(OrderReadyForShipping.class)
+    public void ship(ShipOrder command) {
+        OrderReadyForShipping event = newDomainEvent(OrderReadyForShipping.class);
+        event.orderId().valueOf(attributes().identifier());
+        emitDomainEvent(event);
+    }
+
     public static interface Attributes extends EntityAttributes<OrderId> {
 
         Attribute<Integer> units();
     }
-
 }
