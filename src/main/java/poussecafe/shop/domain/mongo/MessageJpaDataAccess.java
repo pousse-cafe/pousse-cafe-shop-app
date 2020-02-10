@@ -2,23 +2,23 @@ package poussecafe.shop.domain.mongo;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 import poussecafe.discovery.DataAccessImplementation;
 import poussecafe.shop.domain.CustomerId;
 import poussecafe.shop.domain.Message;
 import poussecafe.shop.domain.MessageId;
-import poussecafe.spring.mongo.storage.MongoDataAccess;
-import poussecafe.spring.mongo.storage.SpringMongoDbStorage;
+import poussecafe.spring.jpa.storage.JpaDataAccess;
+import poussecafe.spring.jpa.storage.SpringJpaStorage;
 
 @DataAccessImplementation(
         aggregateRoot = Message.class,
         dataImplementation = MessageData.class,
-        storageName = SpringMongoDbStorage.NAME
+        storageName = SpringJpaStorage.NAME
 )
-public class MessageDataAccess extends MongoDataAccess<MessageId, MessageData, String> implements poussecafe.shop.domain.MessageDataAccess<MessageData> {
+public class MessageJpaDataAccess extends JpaDataAccess<MessageId, MessageData, String> implements poussecafe.shop.domain.MessageDataAccess<MessageData> {
 
     @Autowired
-    private MessageMongoRepository repository;
+    private MessageDataJpaRepository repository;
 
     @Override
     protected String convertId(MessageId id) {
@@ -26,7 +26,7 @@ public class MessageDataAccess extends MongoDataAccess<MessageId, MessageData, S
     }
 
     @Override
-    protected MongoRepository<MessageData, String> mongoRepository() {
+    protected JpaRepository<MessageData, String> jpaRepository() {
         return repository;
     }
 

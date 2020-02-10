@@ -1,12 +1,14 @@
 package poussecafe.shop.domain.mongo;
 
-import org.springframework.data.annotation.Id;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import poussecafe.attribute.Attribute;
 import poussecafe.attribute.AttributeBuilder;
 import poussecafe.shop.adapters.storage.OrderIdData;
 import poussecafe.shop.domain.Order;
 import poussecafe.shop.domain.OrderId;
 
+@Entity
 public class OrderData implements Order.Attributes {
 
     @Override

@@ -1,22 +1,22 @@
 package poussecafe.shop.domain.mongo;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 import poussecafe.discovery.DataAccessImplementation;
 import poussecafe.shop.domain.Customer;
 import poussecafe.shop.domain.CustomerId;
-import poussecafe.spring.mongo.storage.MongoDataAccess;
-import poussecafe.spring.mongo.storage.SpringMongoDbStorage;
+import poussecafe.spring.jpa.storage.JpaDataAccess;
+import poussecafe.spring.jpa.storage.SpringJpaStorage;
 
 @DataAccessImplementation(
         aggregateRoot = Customer.class,
         dataImplementation = CustomerData.class,
-        storageName = SpringMongoDbStorage.NAME
+        storageName = SpringJpaStorage.NAME
 )
-public class CustomerDataAccess extends MongoDataAccess<CustomerId, CustomerData, String> implements poussecafe.shop.domain.CustomerDataAccess<CustomerData> {
+public class CustomerJpaDataAccess extends JpaDataAccess<CustomerId, CustomerData, String> implements poussecafe.shop.domain.CustomerDataAccess<CustomerData> {
 
     @Autowired
-    private CustomerMongoRepository repository;
+    private CustomerDataJpaRepository repository;
 
     @Override
     protected String convertId(CustomerId id) {
@@ -24,7 +24,7 @@ public class CustomerDataAccess extends MongoDataAccess<CustomerId, CustomerData
     }
 
     @Override
-    protected MongoRepository<CustomerData, String> mongoRepository() {
+    protected JpaRepository<CustomerData, String> jpaRepository() {
         return repository;
     }
 }

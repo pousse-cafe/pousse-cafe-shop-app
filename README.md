@@ -1,14 +1,8 @@
-# Pousse-Café Sample App
+# Pousse-Café Shop App
 
-This project is the Sample App module of Pousse-Café. It provides a concrete example of how the Sample Meta App can be 
-integrated in an actual back-end application. This example features a Spring Boot application exposing a REST API
-whose resources interact with the Meta-Application.
-
-In this example, data are stored in a MongoDB instance. Default Spring Boot configuration is being used, but feel free to override it
-(see how to override default configuration [here](https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-external-config.html)
-and see
-[here](https://docs.spring.io/spring-boot/docs/current/reference/html/common-application-properties.html)
-for the common application properties).
+This project is a sample app illustrating the usage of Pousse-Café. It features a Spring Boot application exposing a
+REST API whose resources interact with an online shop model. Data are stored in an H2 embedded DB using JPA. Messages
+are exchanged using Pousse-Café's embedded messaging.
 
 # Test the app
 

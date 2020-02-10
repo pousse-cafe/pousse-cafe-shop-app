@@ -1,6 +1,7 @@
 package poussecafe.shop.domain.mongo;
 
-import org.springframework.data.annotation.Id;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import poussecafe.attribute.Attribute;
 import poussecafe.attribute.AttributeBuilder;
 import poussecafe.shop.domain.ContentType;
@@ -8,6 +9,7 @@ import poussecafe.shop.domain.CustomerId;
 import poussecafe.shop.domain.Message;
 import poussecafe.shop.domain.MessageId;
 
+@Entity
 public class MessageData implements Message.Attributes {
 
     @Override

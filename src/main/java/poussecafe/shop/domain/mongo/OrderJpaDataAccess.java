@@ -1,23 +1,23 @@
 package poussecafe.shop.domain.mongo;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 import poussecafe.discovery.DataAccessImplementation;
 import poussecafe.shop.adapters.storage.OrderIdData;
 import poussecafe.shop.domain.Order;
 import poussecafe.shop.domain.OrderId;
-import poussecafe.spring.mongo.storage.MongoDataAccess;
-import poussecafe.spring.mongo.storage.SpringMongoDbStorage;
+import poussecafe.spring.jpa.storage.JpaDataAccess;
+import poussecafe.spring.jpa.storage.SpringJpaStorage;
 
 @DataAccessImplementation(
         aggregateRoot = Order.class,
         dataImplementation = OrderData.class,
-        storageName = SpringMongoDbStorage.NAME
+        storageName = SpringJpaStorage.NAME
 )
-public class OrderDataAccess extends MongoDataAccess<OrderId, OrderData, OrderIdData> implements poussecafe.shop.domain.OrderDataAccess<OrderData> {
+public class OrderJpaDataAccess extends JpaDataAccess<OrderId, OrderData, OrderIdData> implements poussecafe.shop.domain.OrderDataAccess<OrderData> {
 
     @Autowired
-    private OrderMongoRepository repository;
+    private OrderDataJpaRepository repository;
 
     @Override
     protected OrderIdData convertId(OrderId id) {
@@ -25,7 +25,7 @@ public class OrderDataAccess extends MongoDataAccess<OrderId, OrderData, OrderId
     }
 
     @Override
-    protected MongoRepository<OrderData, OrderIdData> mongoRepository() {
+    protected JpaRepository<OrderData, OrderIdData> jpaRepository() {
         return repository;
     }
 
