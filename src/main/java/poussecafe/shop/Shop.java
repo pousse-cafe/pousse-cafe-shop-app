@@ -1,16 +1,11 @@
 package poussecafe.shop;
 
-import poussecafe.discovery.BundleConfigurer;
+import poussecafe.domain.Module;
 
-public class Shop {
+/**
+ * Models an online shop where Customers may buy Products by placing Orders. Customers receive Message giving them an
+ * update about the handling of their Orders.
+ */
+public interface Shop extends Module {
 
-    private Shop() {
-
-    }
-
-    public static BundleConfigurer configure() {
-        return new BundleConfigurer.Builder()
-                .moduleBasePackage("poussecafe.shop")
-                .build();
-    }
 }

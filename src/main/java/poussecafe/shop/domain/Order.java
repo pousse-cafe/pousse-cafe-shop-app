@@ -6,6 +6,7 @@ import poussecafe.discovery.MessageListener;
 import poussecafe.discovery.ProducesEvent;
 import poussecafe.domain.AggregateRoot;
 import poussecafe.domain.EntityAttributes;
+import poussecafe.shop.Shop;
 import poussecafe.shop.command.SettleOrder;
 import poussecafe.shop.command.ShipOrder;
 import poussecafe.shop.process.OrderSettlement;
@@ -13,7 +14,8 @@ import poussecafe.shop.process.OrderShippment;
 
 @Aggregate(
   factory = OrderFactory.class,
-  repository = OrderRepository.class
+  repository = OrderRepository.class,
+  module = Shop.class
 )
 public class Order extends AggregateRoot<OrderId, Order.Attributes> {
 

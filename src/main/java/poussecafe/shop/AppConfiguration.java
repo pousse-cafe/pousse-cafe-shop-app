@@ -17,7 +17,7 @@ public class AppConfiguration {
             SpringJpaStorage storage) {
         MessagingAndStorage messagingAndStorage = new MessagingAndStorage(messaging, storage);
         return new Bundles.Builder()
-            .withBundle(Shop.configure()
+            .withBundle(ShopBundle.configure()
                 .defineThenImplement()
                 .messagingAndStorage(messagingAndStorage)
                 .build())
