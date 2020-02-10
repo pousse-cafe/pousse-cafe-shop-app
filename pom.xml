@@ -15,6 +15,11 @@
 
     <properties>
         <spring-boot.version>2.1.7.RELEASE</spring-boot.version>
+        <pousse-cafe.version>0.17.0-SNAPSHOT</pousse-cafe.version>
+        <pousse-cafe-spring.version>0.13.0</pousse-cafe-spring.version>
+        <pousse-cafe-spring-mongo.version>0.13.0</pousse-cafe-spring-mongo.version>
+        <pousse-cafe-journal-spring-mongo.version>0.10.0</pousse-cafe-journal-spring-mongo.version>
+        <pousse-cafe-maven-plugin.version>0.14.0-SNAPSHOT</pousse-cafe-maven-plugin.version>
     </properties>
 
     <dependencies>
@@ -35,28 +40,28 @@
         <dependency>
             <groupId>org.pousse-cafe-framework</groupId>
             <artifactId>pousse-cafe-core</artifactId>
-            <version>0.17.0-SNAPSHOT</version>
+            <version>${pousse-cafe.version}</version>
         </dependency>
         <dependency>
             <groupId>org.pousse-cafe-framework</groupId>
             <artifactId>pousse-cafe-spring</artifactId>
-            <version>0.13.0</version>
+            <version>${pousse-cafe-spring.version}</version>
         </dependency>
         <dependency>
             <groupId>org.pousse-cafe-framework</groupId>
             <artifactId>pousse-cafe-spring-mongo</artifactId>
-            <version>0.13.0</version>
+            <version>${pousse-cafe-spring-mongo.version}</version>
         </dependency>
         <dependency>
             <groupId>org.pousse-cafe-framework</groupId>
             <artifactId>pousse-cafe-journal-spring-mongo</artifactId>
-            <version>0.10.0</version>
+            <version>${pousse-cafe-journal-spring-mongo.version}</version>
         </dependency>
 
         <dependency>
             <groupId>org.pousse-cafe-framework</groupId>
             <artifactId>pousse-cafe-test</artifactId>
-            <version>0.16.0</version>
+            <version>${pousse-cafe.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -83,7 +88,7 @@
             <plugin>
                 <groupId>org.pousse-cafe-framework</groupId>
                 <artifactId>pousse-cafe-maven-plugin</artifactId>
-                <version>0.14.0-SNAPSHOT</version>
+                <version>${pousse-cafe-maven-plugin.version}</version>
                 <configuration>
                     <storageAdapters>
                         <storageAdapter>internal</storageAdapter>

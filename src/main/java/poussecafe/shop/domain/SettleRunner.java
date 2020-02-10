@@ -1,12 +1,13 @@
 package poussecafe.shop.domain;
 
-import poussecafe.discovery.SingleAggregateMessageListenerRunner;
+import poussecafe.listeners.AlwaysUpdateOneRunner;
 import poussecafe.shop.command.SettleOrder;
 
-public class SettleRunner extends SingleAggregateMessageListenerRunner<SettleOrder, OrderId, Order> {
+public class SettleRunner
+extends AlwaysUpdateOneRunner<SettleOrder, OrderId, Order> {
 
     @Override
-    public OrderId targetAggregateId(SettleOrder message) {
+    protected OrderId aggregateId(SettleOrder message) {
         return message.orderId().value();
     }
 }
