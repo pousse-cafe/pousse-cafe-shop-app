@@ -1,9 +1,9 @@
 package poussecafe.shop.domain;
 
-import poussecafe.listeners.AlwaysUpdateOneRunner;
+import poussecafe.listeners.UpdateOneRunner;
 import poussecafe.shop.command.ShipOrder;
 
-public class ShipOrderRunner extends AlwaysUpdateOneRunner<ShipOrder, OrderId, Order> {
+public class ShipOrderRunner extends UpdateOneRunner<ShipOrder, OrderId, Order> {
 
     @Override
     public OrderId aggregateId(ShipOrder message) {

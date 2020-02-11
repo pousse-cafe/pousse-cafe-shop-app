@@ -1,10 +1,10 @@
 package poussecafe.shop.domain;
 
-import poussecafe.listeners.AlwaysUpdateOneRunner;
+import poussecafe.listeners.UpdateOneRunner;
 import poussecafe.shop.command.AddUnits;
 
 public class AddUnitsRunner
-extends AlwaysUpdateOneRunner<AddUnits, ProductId, Product> {
+extends UpdateOneRunner<AddUnits, ProductId, Product> {
 
     @Override
     protected ProductId aggregateId(AddUnits message) {
