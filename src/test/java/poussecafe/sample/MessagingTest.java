@@ -43,7 +43,7 @@ public class MessagingTest extends ShopTest {
         OrderRejected event = new SerializableOrderRejected();
         event.productId().value(productId);
         event.description().value(orderDescription);
-        emitDomainEvent(event);
+        issue(event);
     }
 
     private void thenMessageCreatedWithContent(ContentType contentType) {

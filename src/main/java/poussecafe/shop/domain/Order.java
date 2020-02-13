@@ -24,7 +24,7 @@ public class Order extends AggregateRoot<OrderId, Order.Attributes> {
     public void onAdd() {
         OrderCreated event = newDomainEvent(OrderCreated.class);
         event.orderId().valueOf(attributes().identifier());
-        emitDomainEvent(event);
+        issue(event);
     }
 
     @MessageListener(runner = SettleRunner.class, processes = OrderSettlement.class)
@@ -32,7 +32,7 @@ public class Order extends AggregateRoot<OrderId, Order.Attributes> {
     public void settle(SettleOrder command) {
         OrderSettled event = newDomainEvent(OrderSettled.class);
         event.orderId().valueOf(attributes().identifier());
-        emitDomainEvent(event);
+        issue(event);
     }
 
     @MessageListener(runner = ShipOrderRunner.class, processes = OrderShippment.class)
@@ -40,7 +40,7 @@ public class Order extends AggregateRoot<OrderId, Order.Attributes> {
     public void ship(ShipOrder command) {
         OrderReadyForShipping event = newDomainEvent(OrderReadyForShipping.class);
         event.orderId().valueOf(attributes().identifier());
-        emitDomainEvent(event);
+        issue(event);
     }
 
     public static interface Attributes extends EntityAttributes<OrderId> {

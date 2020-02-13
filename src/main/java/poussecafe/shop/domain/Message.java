@@ -19,7 +19,7 @@ public class Message extends AggregateRoot<MessageId, Message.Attributes> {
     public void onAdd() {
         MessageCreated event = newDomainEvent(MessageCreated.class);
         event.messageId().valueOf(attributes().identifier());
-        emitDomainEvent(event);
+        issue(event);
     }
 
     public static interface Attributes extends EntityAttributes<MessageId> {
