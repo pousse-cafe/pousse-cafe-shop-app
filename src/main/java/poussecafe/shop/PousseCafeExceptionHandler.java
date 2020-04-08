@@ -6,8 +6,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import poussecafe.exception.NotFoundException;
-import poussecafe.shop.view.ErrorView;
-
+import poussecafe.shop.api.view.ErrorView;
 import javax.servlet.http.HttpServletRequest;
 
 @ControllerAdvice
