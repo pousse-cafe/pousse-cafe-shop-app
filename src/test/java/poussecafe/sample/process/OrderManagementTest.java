@@ -4,9 +4,9 @@ import org.junit.Test;
 import poussecafe.sample.ShopTest;
 import poussecafe.shop.commands.PlaceOrder;
 import poussecafe.shop.model.customer.CustomerId;
-import poussecafe.shop.model.order.Order;
 import poussecafe.shop.model.order.OrderDescription;
 import poussecafe.shop.model.order.OrderId;
+import poussecafe.shop.model.order.OrderRepository;
 import poussecafe.shop.model.product.ProductId;
 
 import static org.junit.Assert.assertTrue;
@@ -53,8 +53,10 @@ public class OrderManagementTest extends ShopTest {
     }
 
     private void thenOrderCreated() {
-        assertTrue(getOptional(Order.class, orderId()).isPresent());
+        assertTrue(orderRepository.getOptional(orderId()).isPresent());
     }
+
+    private OrderRepository orderRepository;
 
     private OrderId orderId() {
         return new OrderId(productId, description.customerId(), description.reference());
@@ -69,6 +71,6 @@ public class OrderManagementTest extends ShopTest {
     }
 
     private void thenNoOrderCreated() {
-        assertTrue(getOptional(Order.class, orderId()).isEmpty());
+        assertTrue(orderRepository.getOptional(orderId()).isEmpty());
     }
 }

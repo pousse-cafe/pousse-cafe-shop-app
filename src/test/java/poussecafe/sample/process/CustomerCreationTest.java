@@ -3,8 +3,8 @@ package poussecafe.sample.process;
 import org.junit.Test;
 import poussecafe.sample.ShopTest;
 import poussecafe.shop.commands.CreateCustomer;
-import poussecafe.shop.model.customer.Customer;
 import poussecafe.shop.model.customer.CustomerId;
+import poussecafe.shop.model.customer.CustomerRepository;
 
 import static org.junit.Assert.assertTrue;
 
@@ -30,6 +30,8 @@ public class CustomerCreationTest extends ShopTest {
     }
 
     private void thenCustomerIsCreated() {
-        assertTrue(getOptional(Customer.class, customerId).isPresent());
+        assertTrue(customerRepository.getOptional(customerId).isPresent());
     }
+
+    private CustomerRepository customerRepository;
 }
