@@ -1,15 +1,16 @@
 package poussecafe.shop;
 
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
 import poussecafe.messaging.Messaging;
 import poussecafe.runtime.Bundles;
 import poussecafe.runtime.MessagingAndStorage;
+import poussecafe.spring.RuntimeConfiguration;
 import poussecafe.spring.jpa.storage.SpringJpaStorage;
 
 @Configuration
-@ComponentScan(basePackages = { "poussecafe.spring" })
+@Import(RuntimeConfiguration.class)
 public class ApplicationConfiguration {
 
     @Bean
