@@ -12,8 +12,8 @@ import poussecafe.runtime.Runtime;
 import poussecafe.shop.api.view.CreateCustomerView;
 import poussecafe.shop.api.view.CustomerView;
 import poussecafe.shop.commands.CreateCustomer;
+import poussecafe.shop.model.customer.Customer.CustomerRepository;
 import poussecafe.shop.model.customer.CustomerId;
-import poussecafe.shop.model.customer.CustomerRepository;
 
 @RestController
 public class CustomerController {

@@ -4,9 +4,9 @@ import org.junit.Test;
 import poussecafe.sample.ShopTest;
 import poussecafe.shop.commands.PlaceOrder;
 import poussecafe.shop.model.customer.CustomerId;
+import poussecafe.shop.model.order.Order.OrderRepository;
 import poussecafe.shop.model.order.OrderDescription;
 import poussecafe.shop.model.order.OrderId;
-import poussecafe.shop.model.order.OrderRepository;
 import poussecafe.shop.model.product.ProductId;
 
 import static org.junit.Assert.assertTrue;

@@ -3,8 +3,8 @@ package poussecafe.sample.process;
 import org.junit.Test;
 import poussecafe.sample.ShopTest;
 import poussecafe.shop.commands.CreateCustomer;
+import poussecafe.shop.model.customer.Customer.CustomerRepository;
 import poussecafe.shop.model.customer.CustomerId;
-import poussecafe.shop.model.customer.CustomerRepository;
 
 import static org.junit.Assert.assertTrue;
 
