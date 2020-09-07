@@ -15,10 +15,10 @@
 
     <properties>
         <spring-boot.version>2.2.4.RELEASE</spring-boot.version>
-        <pousse-cafe.version>0.22.0-SNAPSHOT</pousse-cafe.version>
+        <pousse-cafe.version>0.23.0</pousse-cafe.version>
         <pousse-cafe-spring.version>0.14.0</pousse-cafe-spring.version>
-        <pousse-cafe-spring-jpa.version>0.2.0-SNAPSHOT</pousse-cafe-spring-jpa.version>
-        <pousse-cafe-maven-plugin.version>0.16.0-SNAPSHOT</pousse-cafe-maven-plugin.version>
+        <pousse-cafe-spring-jpa.version>0.3.0</pousse-cafe-spring-jpa.version>
+        <pousse-cafe-maven-plugin.version>0.17.0</pousse-cafe-maven-plugin.version>
     </properties>
 
     <dependencies>
@@ -96,7 +96,7 @@
                 <configuration>
                     <storageAdapters>
                         <storageAdapter>internal</storageAdapter>
-                        <storageAdapter>spring-mongo</storageAdapter>
+                        <storageAdapter>spring-jpa</storageAdapter>
                     </storageAdapters>
                 </configuration>
                 <executions>
