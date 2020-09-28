@@ -5,14 +5,12 @@ import poussecafe.discovery.Aggregate;
 import poussecafe.discovery.ProducesEvent;
 import poussecafe.domain.AggregateRoot;
 import poussecafe.domain.EntityAttributes;
-import poussecafe.shop.Shop;
 import poussecafe.shop.model.customer.CustomerId;
 import poussecafe.shop.model.events.MessageCreated;
 
 @Aggregate(
   factory = MessageFactory.class,
-  repository = MessageRepository.class,
-  module = Shop.class
+  repository = MessageRepository.class
 )
 public class Message extends AggregateRoot<MessageId, Message.Attributes> {
 

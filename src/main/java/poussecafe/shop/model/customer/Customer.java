@@ -6,11 +6,10 @@ import poussecafe.domain.AggregateRoot;
 import poussecafe.domain.EntityAttributes;
 import poussecafe.domain.Factory;
 import poussecafe.domain.Repository;
-import poussecafe.shop.Shop;
 import poussecafe.shop.commands.CreateCustomer;
 import poussecafe.shop.process.CustomerCreation;
 
-@Aggregate(module = Shop.class)
+@Aggregate
 public class Customer {
 
     public static class CustomerFactory extends Factory<CustomerId, CustomerRoot, CustomerRoot.Attributes> {

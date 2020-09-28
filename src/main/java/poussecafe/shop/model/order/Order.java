@@ -8,7 +8,6 @@ import poussecafe.domain.AggregateRoot;
 import poussecafe.domain.EntityAttributes;
 import poussecafe.domain.Factory;
 import poussecafe.domain.Repository;
-import poussecafe.shop.Shop;
 import poussecafe.shop.commands.SettleOrder;
 import poussecafe.shop.commands.ShipOrder;
 import poussecafe.shop.model.events.OrderCreated;
@@ -19,7 +18,7 @@ import poussecafe.shop.process.OrderPlacement;
 import poussecafe.shop.process.OrderSettlement;
 import poussecafe.shop.process.OrderShippment;
 
-@Aggregate(module = Shop.class)
+@Aggregate
 public class Order {
 
     public static class OrderFactory extends Factory<OrderId, OrderRoot, OrderRoot.Attributes> {

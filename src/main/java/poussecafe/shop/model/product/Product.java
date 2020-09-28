@@ -7,7 +7,6 @@ import poussecafe.discovery.ProducesEvent;
 import poussecafe.domain.AggregateRoot;
 import poussecafe.domain.DomainException;
 import poussecafe.domain.EntityAttributes;
-import poussecafe.shop.Shop;
 import poussecafe.shop.commands.AddUnits;
 import poussecafe.shop.commands.PlaceOrder;
 import poussecafe.shop.model.events.OrderPlaced;
@@ -18,8 +17,7 @@ import poussecafe.shop.process.ProductManagement;
 
 @Aggregate(
   factory = ProductFactory.class,
-  repository = ProductRepository.class,
-  module = Shop.class
+  repository = ProductRepository.class
 )
 public class Product extends AggregateRoot<ProductId, Product.Attributes> {
 
