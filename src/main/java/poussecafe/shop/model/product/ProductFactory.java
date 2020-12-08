@@ -1,11 +1,11 @@
 package poussecafe.shop.model.product;
 
 import poussecafe.discovery.MessageListener;
-import poussecafe.domain.Factory;
+import poussecafe.domain.AggregateFactory;
 import poussecafe.shop.commands.CreateProduct;
 import poussecafe.shop.process.ProductManagement;
 
-public class ProductFactory extends Factory<ProductId, Product, Product.Attributes> {
+public class ProductFactory extends AggregateFactory<ProductId, Product, Product.Attributes> {
 
     @MessageListener(processes = ProductManagement.class)
     public Product buildProductWithNoStock(CreateProduct command) {

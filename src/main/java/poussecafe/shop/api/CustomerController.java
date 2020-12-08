@@ -12,7 +12,7 @@ import poussecafe.runtime.Runtime;
 import poussecafe.shop.api.view.CreateCustomerView;
 import poussecafe.shop.api.view.CustomerView;
 import poussecafe.shop.commands.CreateCustomer;
-import poussecafe.shop.model.customer.Customer.CustomerRepository;
+import poussecafe.shop.model.customer.Customer.Repository;
 import poussecafe.shop.model.customer.CustomerId;
 
 @RestController
@@ -43,5 +43,5 @@ public class CustomerController {
     }
 
     @Autowired
-    private CustomerRepository customerRepository;
+    private Repository customerRepository;
 }

@@ -4,10 +4,10 @@ import poussecafe.attribute.Attribute;
 import poussecafe.discovery.Aggregate;
 import poussecafe.discovery.MessageListener;
 import poussecafe.discovery.ProducesEvent;
+import poussecafe.domain.AggregateFactory;
+import poussecafe.domain.AggregateRepository;
 import poussecafe.domain.AggregateRoot;
 import poussecafe.domain.EntityAttributes;
-import poussecafe.domain.Factory;
-import poussecafe.domain.Repository;
 import poussecafe.shop.commands.SettleOrder;
 import poussecafe.shop.commands.ShipOrder;
 import poussecafe.shop.model.events.OrderCreated;
@@ -21,19 +21,19 @@ import poussecafe.shop.process.OrderShippment;
 @Aggregate
 public class Order {
 
-    public static class OrderFactory extends Factory<OrderId, OrderRoot, OrderRoot.Attributes> {
+    public static class Factory extends AggregateFactory<OrderId, Root, Root.Attributes> {
 
         @MessageListener(processes = OrderPlacement.class)
-        public OrderRoot buildPlacedOrder(OrderPlaced event) {
+        public Root buildPlacedOrder(OrderPlaced event) {
             OrderDescription description = event.description().value();
             OrderId id = new OrderId(event.productId().value(), description.customerId(), description.reference());
-            OrderRoot order = newAggregateWithId(id);
+            Root order = newAggregateWithId(id);
             order.attributes().units().value(description.units());
             return order;
         }
     }
 
-    public static class OrderRoot extends AggregateRoot<OrderId, OrderRoot.Attributes> {
+    public static class Root extends AggregateRoot<OrderId, Root.Attributes> {
 
         @ProducesEvent(OrderCreated.class)
         @Override
@@ -65,7 +65,7 @@ public class Order {
         }
     }
 
-    public static class OrderRepository extends Repository<OrderRoot, OrderId, OrderRoot.Attributes> {
+    public static class Repository extends AggregateRepository<OrderId, Root, Root.Attributes> {
 
     }
 

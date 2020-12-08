@@ -98,6 +98,8 @@
                         <storageAdapter>internal</storageAdapter>
                         <storageAdapter>spring-jpa</storageAdapter>
                     </storageAdapters>
+                    <basePackage>poussecafe.shop</basePackage>
+                    <codeFormatterProfile>${project.basedir}/codeFormatterProfile.xml</codeFormatterProfile>
                 </configuration>
                 <executions>
                     <execution>

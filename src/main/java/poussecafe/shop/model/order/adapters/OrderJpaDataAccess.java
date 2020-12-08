@@ -3,13 +3,13 @@ package poussecafe.shop.model.order.adapters;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 import poussecafe.discovery.DataAccessImplementation;
-import poussecafe.shop.model.order.Order.OrderRoot;
+import poussecafe.shop.model.order.Order.Root;
 import poussecafe.shop.model.order.OrderId;
 import poussecafe.spring.jpa.storage.JpaDataAccess;
 import poussecafe.spring.jpa.storage.SpringJpaStorage;
 
 @DataAccessImplementation(
-        aggregateRoot = OrderRoot.class,
+        aggregateRoot = Root.class,
         dataImplementation = OrderData.class,
         storageName = SpringJpaStorage.NAME
 )

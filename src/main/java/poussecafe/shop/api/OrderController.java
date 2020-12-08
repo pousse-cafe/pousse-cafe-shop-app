@@ -17,8 +17,8 @@ import poussecafe.shop.commands.PlaceOrder;
 import poussecafe.shop.commands.SettleOrder;
 import poussecafe.shop.commands.ShipOrder;
 import poussecafe.shop.model.customer.CustomerId;
-import poussecafe.shop.model.order.Order.OrderRepository;
-import poussecafe.shop.model.order.Order.OrderRoot;
+import poussecafe.shop.model.order.Order.Repository;
+import poussecafe.shop.model.order.Order.Root;
 import poussecafe.shop.model.order.OrderDescription;
 import poussecafe.shop.model.order.OrderId;
 import poussecafe.shop.model.product.ProductId;
@@ -29,7 +29,7 @@ public class OrderController {
     @GetMapping(path = "/orders/{customerId}/{reference}/{productId}")
     public OrderView getOrder(@PathVariable("customerId") String customerId, @PathVariable("reference") String reference, @PathVariable("productId") String productId) {
         OrderId orderId = new OrderId(new ProductId(productId), new CustomerId(customerId), reference);
-        OrderRoot order = orderRepository.get(orderId);
+        Root order = orderRepository.get(orderId);
         OrderView orderView = new OrderView();
         orderView.customerId = customerId;
         orderView.reference = reference;
@@ -39,7 +39,7 @@ public class OrderController {
     }
 
     @Autowired
-    private OrderRepository orderRepository;
+    private Repository orderRepository;
 
     @PostMapping(path = "/placed-orders")
     public void placeOrder(@RequestBody PlaceOrderView input) {

@@ -4,7 +4,7 @@ import org.junit.Test;
 import poussecafe.sample.ShopTest;
 import poussecafe.shop.commands.PlaceOrder;
 import poussecafe.shop.model.customer.CustomerId;
-import poussecafe.shop.model.order.Order.OrderRepository;
+import poussecafe.shop.model.order.Order.Repository;
 import poussecafe.shop.model.order.OrderDescription;
 import poussecafe.shop.model.order.OrderId;
 import poussecafe.shop.model.product.ProductId;
@@ -56,7 +56,7 @@ public class OrderManagementTest extends ShopTest {
         assertTrue(orderRepository.getOptional(orderId()).isPresent());
     }
 
-    private OrderRepository orderRepository;
+    private Repository orderRepository;
 
     private OrderId orderId() {
         return new OrderId(productId, description.customerId(), description.reference());

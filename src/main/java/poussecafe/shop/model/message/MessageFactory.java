@@ -2,7 +2,7 @@ package poussecafe.shop.model.message;
 
 import java.util.UUID;
 import poussecafe.discovery.MessageListener;
-import poussecafe.domain.Factory;
+import poussecafe.domain.AggregateFactory;
 import poussecafe.shop.model.customer.CustomerId;
 import poussecafe.shop.model.events.OrderCreated;
 import poussecafe.shop.model.events.OrderReadyForShipping;
@@ -10,7 +10,7 @@ import poussecafe.shop.model.events.OrderRejected;
 import poussecafe.shop.model.events.OrderSettled;
 import poussecafe.shop.process.Messaging;
 
-public class MessageFactory extends Factory<MessageId, Message, Message.Attributes> {
+public class MessageFactory extends AggregateFactory<MessageId, Message, Message.Attributes> {
 
     @MessageListener(processes = Messaging.class)
     public Message buildMessage(OrderRejected event) {

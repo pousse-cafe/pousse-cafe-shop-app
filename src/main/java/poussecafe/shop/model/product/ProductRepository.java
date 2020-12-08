@@ -1,7 +1,7 @@
 package poussecafe.shop.model.product;
 
-import poussecafe.domain.Repository;
+import poussecafe.domain.AggregateRepository;
 
-public class ProductRepository extends Repository<Product, ProductId, Product.Attributes> {
+public class ProductRepository extends AggregateRepository<ProductId, Product, Product.Attributes> {
 
 }

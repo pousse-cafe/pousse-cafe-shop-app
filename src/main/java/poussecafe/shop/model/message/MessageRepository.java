@@ -1,10 +1,10 @@
 package poussecafe.shop.model.message;
 
 import java.util.List;
-import poussecafe.domain.Repository;
+import poussecafe.domain.AggregateRepository;
 import poussecafe.shop.model.customer.CustomerId;
 
-public class MessageRepository extends Repository<Message, MessageId, Message.Attributes> {
+public class MessageRepository extends AggregateRepository<MessageId, Message, Message.Attributes> {
 
     public List<Message> findByCustomer(CustomerId customerId) {
         return wrap(dataAccess().findByCustomer(customerId));
