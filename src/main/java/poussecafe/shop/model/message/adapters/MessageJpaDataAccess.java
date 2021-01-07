@@ -5,13 +5,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 import poussecafe.discovery.DataAccessImplementation;
 import poussecafe.shop.model.customer.CustomerId;
-import poussecafe.shop.model.message.Message;
+import poussecafe.shop.model.message.MessageRoot;
 import poussecafe.shop.model.message.MessageId;
 import poussecafe.spring.jpa.storage.JpaDataAccess;
 import poussecafe.spring.jpa.storage.SpringJpaStorage;
 
 @DataAccessImplementation(
-        aggregateRoot = Message.class,
+        aggregateRoot = MessageRoot.class,
         dataImplementation = MessageData.class,
         storageName = SpringJpaStorage.NAME
 )

@@ -3,7 +3,7 @@ package poussecafe.shop.model.message.adapters;
 import java.util.List;
 import poussecafe.discovery.DataAccessImplementation;
 import poussecafe.shop.model.customer.CustomerId;
-import poussecafe.shop.model.message.Message;
+import poussecafe.shop.model.message.MessageRoot;
 import poussecafe.shop.model.message.MessageDataAccess;
 import poussecafe.shop.model.message.MessageId;
 import poussecafe.storage.internal.InternalDataAccess;
@@ -12,7 +12,7 @@ import poussecafe.storage.internal.InternalStorage;
 import static java.util.Arrays.asList;
 
 @DataAccessImplementation(
-    aggregateRoot = Message.class,
+    aggregateRoot = MessageRoot.class,
     dataImplementation = MessageData.class,
     storageName = InternalStorage.NAME
 )

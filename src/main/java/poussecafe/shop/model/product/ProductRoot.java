@@ -19,7 +19,7 @@ import poussecafe.shop.process.ProductManagement;
   factory = ProductFactory.class,
   repository = ProductRepository.class
 )
-public class Product extends AggregateRoot<ProductId, Product.Attributes> {
+public class ProductRoot extends AggregateRoot<ProductId, ProductRoot.Attributes> {
 
     @MessageListener(runner = AddUnitsRunner.class, processes = ProductManagement.class)
     public void addUnits(AddUnits command) {

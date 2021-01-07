@@ -14,7 +14,7 @@ import poussecafe.shop.api.view.CreateProductView;
 import poussecafe.shop.api.view.ProductView;
 import poussecafe.shop.commands.AddUnits;
 import poussecafe.shop.commands.CreateProduct;
-import poussecafe.shop.model.product.Product;
+import poussecafe.shop.model.product.ProductRoot;
 import poussecafe.shop.model.product.ProductId;
 import poussecafe.shop.model.product.ProductRepository;
 
@@ -40,7 +40,7 @@ public class ProductController {
     public ProductView getProduct(@PathVariable("id") String id) {
         logger.info("Fetching product with id {}", id);
         ProductId productId = new ProductId(id);
-        Product product = productRepository.get(productId);
+        ProductRoot product = productRepository.get(productId);
 
         ProductView view = new ProductView();
         view.id = id;

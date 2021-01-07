@@ -12,7 +12,7 @@ import poussecafe.shop.model.events.MessageCreated;
   factory = MessageFactory.class,
   repository = MessageRepository.class
 )
-public class Message extends AggregateRoot<MessageId, Message.Attributes> {
+public class MessageRoot extends AggregateRoot<MessageId, MessageRoot.Attributes> {
 
     @ProducesEvent(value = MessageCreated.class, consumedByExternal = "Communication System")
     @Override
@@ -28,5 +28,4 @@ public class Message extends AggregateRoot<MessageId, Message.Attributes> {
 
         Attribute<ContentType> contentType();
     }
-
 }

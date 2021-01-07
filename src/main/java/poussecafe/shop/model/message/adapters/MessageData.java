@@ -7,12 +7,12 @@ import poussecafe.attribute.Attribute;
 import poussecafe.attribute.AttributeBuilder;
 import poussecafe.shop.model.customer.CustomerId;
 import poussecafe.shop.model.message.ContentType;
-import poussecafe.shop.model.message.Message;
+import poussecafe.shop.model.message.MessageRoot;
 import poussecafe.shop.model.message.MessageId;
 
 @SuppressWarnings("serial")
 @Entity
-public class MessageData implements Message.Attributes, Serializable {
+public class MessageData implements MessageRoot.Attributes, Serializable {
 
     @Override
     public Attribute<MessageId> identifier() {

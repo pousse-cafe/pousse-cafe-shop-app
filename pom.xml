@@ -4,7 +4,7 @@
     <parent>
         <groupId>org.pousse-cafe-framework</groupId>
         <artifactId>pousse-cafe</artifactId>
-        <version>0.24.0</version>
+        <version>0.25.0</version>
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
@@ -18,7 +18,7 @@
         <pousse-cafe.version>0.24.0</pousse-cafe.version>
         <pousse-cafe-spring.version>0.15.0</pousse-cafe-spring.version>
         <pousse-cafe-spring-jpa.version>0.3.0</pousse-cafe-spring-jpa.version>
-        <pousse-cafe-maven-plugin.version>0.18.0</pousse-cafe-maven-plugin.version>
+        <pousse-cafe-maven-plugin.version>0.19.0</pousse-cafe-maven-plugin.version>
     </properties>
 
     <dependencies>
@@ -103,13 +103,23 @@
                 </configuration>
                 <executions>
                     <execution>
+                        <id>doc</id>
                         <goals>
                             <goal>generate-doc</goal>
                         </goals>
                         <phase>package</phase>
                         <configuration>
                             <domainName>Shop</domainName>
-                            <basePackage>poussecafe.shop</basePackage>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>validate</id>
+                        <goals>
+                            <goal>validate</goal>
+                        </goals>
+                        <phase>compile</phase>
+                        <configuration>
+                            <failOnWarn>true</failOnWarn>
                         </configuration>
                     </execution>
                 </executions>

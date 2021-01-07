@@ -4,14 +4,14 @@ import java.util.List;
 import poussecafe.domain.AggregateRepository;
 import poussecafe.shop.model.customer.CustomerId;
 
-public class MessageRepository extends AggregateRepository<MessageId, Message, Message.Attributes> {
+public class MessageRepository extends AggregateRepository<MessageId, MessageRoot, MessageRoot.Attributes> {
 
-    public List<Message> findByCustomer(CustomerId customerId) {
+    public List<MessageRoot> findByCustomer(CustomerId customerId) {
         return wrap(dataAccess().findByCustomer(customerId));
     }
 
     @Override
-    public MessageDataAccess<Message.Attributes> dataAccess() {
-        return (MessageDataAccess<Message.Attributes>) super.dataAccess();
+    public MessageDataAccess<MessageRoot.Attributes> dataAccess() {
+        return (MessageDataAccess<MessageRoot.Attributes>) super.dataAccess();
     }
 }

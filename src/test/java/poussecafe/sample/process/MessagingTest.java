@@ -7,13 +7,13 @@ import poussecafe.shop.model.customer.CustomerId;
 import poussecafe.shop.model.events.OrderRejected;
 import poussecafe.shop.model.events.adapters.OrderRejectedData;
 import poussecafe.shop.model.message.ContentType;
-import poussecafe.shop.model.message.Message;
+import poussecafe.shop.model.message.MessageRoot;
 import poussecafe.shop.model.message.MessageRepository;
 import poussecafe.shop.model.order.OrderDescription;
 import poussecafe.shop.model.product.ProductId;
 
 import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.assertThat;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 public class MessagingTest extends ShopTest {
 
@@ -49,7 +49,7 @@ public class MessagingTest extends ShopTest {
 
     private void thenMessageCreatedWithContent(ContentType contentType) {
         waitUntilAllMessageQueuesEmpty();
-        List<Message> messages = messageRepository.findByCustomer(customerId);
+        List<MessageRoot> messages = messageRepository.findByCustomer(customerId);
         assertThat(messages.size(), is(1));
         assertThat(messages.get(0).attributes().contentType().value(), is(contentType));
     }
