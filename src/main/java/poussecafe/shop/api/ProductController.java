@@ -14,9 +14,8 @@ import poussecafe.shop.api.view.CreateProductView;
 import poussecafe.shop.api.view.ProductView;
 import poussecafe.shop.commands.AddUnits;
 import poussecafe.shop.commands.CreateProduct;
-import poussecafe.shop.model.product.ProductRoot;
+import poussecafe.shop.model.product.Product;
 import poussecafe.shop.model.product.ProductId;
-import poussecafe.shop.model.product.ProductRepository;
 
 @RestController
 public class ProductController {
@@ -40,7 +39,7 @@ public class ProductController {
     public ProductView getProduct(@PathVariable("id") String id) {
         logger.info("Fetching product with id {}", id);
         ProductId productId = new ProductId(id);
-        ProductRoot product = productRepository.get(productId);
+        Product.Root product = productRepository.get(productId);
 
         ProductView view = new ProductView();
         view.id = id;
@@ -50,7 +49,7 @@ public class ProductController {
     }
 
     @Autowired
-    private ProductRepository productRepository;
+    private Product.Repository productRepository;
 
     @PostMapping(path = "/product/{id}/add-units")
     public void addUnits(@PathVariable("id") String id, @RequestBody AddUnitsView input) {

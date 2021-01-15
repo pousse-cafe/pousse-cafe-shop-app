@@ -1,5 +1,5 @@
 {
-    "poussecafe.shop.model.product.Product": [
+    "Shop.Product": [
         {
             "productId": "product-1",
             "totalUnits": 10,

@@ -5,12 +5,12 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import poussecafe.attribute.Attribute;
 import poussecafe.attribute.AttributeBuilder;
-import poussecafe.shop.model.product.ProductRoot;
+import poussecafe.shop.model.product.Product;
 import poussecafe.shop.model.product.ProductId;
 
 @SuppressWarnings("serial")
 @Entity
-public class ProductData implements ProductRoot.Attributes, Serializable {
+public class ProductData implements Product.Root.Attributes, Serializable {
 
     @Override
     public Attribute<ProductId> identifier() {

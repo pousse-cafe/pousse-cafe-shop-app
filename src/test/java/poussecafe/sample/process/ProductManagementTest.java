@@ -4,9 +4,8 @@ import org.junit.Test;
 import poussecafe.sample.ShopTest;
 import poussecafe.shop.commands.AddUnits;
 import poussecafe.shop.commands.CreateProduct;
-import poussecafe.shop.model.product.ProductRoot;
+import poussecafe.shop.model.product.Product;
 import poussecafe.shop.model.product.ProductId;
-import poussecafe.shop.model.product.ProductRepository;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -41,7 +40,7 @@ public class ProductManagementTest extends ShopTest {
         assertTrue(productRepository.getOptional(productId).isPresent());
     }
 
-    private ProductRepository productRepository;
+    private Product.Repository productRepository;
 
     @Test
     public void unitsCanBeAdded() {
@@ -65,7 +64,7 @@ public class ProductManagementTest extends ShopTest {
     private AddUnits addUnits;
 
     private void thenProductHasAddedUnits() {
-        ProductRoot product = productRepository.get(productId);
+        Product.Root product = productRepository.get(productId);
         assertThat(product.attributes().availableUnits().value(), is(addUnits.units().value()));
         assertThat(product.attributes().totalUnits().value(), is(addUnits.units().value()));
     }

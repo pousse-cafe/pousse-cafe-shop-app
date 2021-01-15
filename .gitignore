@@ -9,3 +9,4 @@ target/
 .sts4-cache/
 .idea
 *.iml
+/.pousse-cafe
