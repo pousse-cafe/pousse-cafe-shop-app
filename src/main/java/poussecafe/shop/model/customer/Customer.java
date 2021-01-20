@@ -9,6 +9,9 @@ import poussecafe.domain.EntityAttributes;
 import poussecafe.shop.commands.CreateCustomer;
 import poussecafe.shop.process.CustomerCreation;
 
+/**
+ * <p>A Customer can place Orders and receive Messages.</p>
+ */
 @Aggregate
 public class Customer {
 

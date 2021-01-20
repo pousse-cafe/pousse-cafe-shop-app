@@ -8,9 +8,12 @@ import poussecafe.shop.model.order.Order.Repository;
 import poussecafe.shop.model.order.OrderDescription;
 import poussecafe.shop.model.order.OrderId;
 import poussecafe.shop.model.product.ProductId;
+import poussecafe.shop.process.OrderPlacement;
+import poussecafe.test.ProcessCovered;
 
 import static org.junit.Assert.assertTrue;
 
+@ProcessCovered(OrderPlacement.class)
 public class OrderManagementTest extends ShopTest {
 
     private CustomerId customerId;

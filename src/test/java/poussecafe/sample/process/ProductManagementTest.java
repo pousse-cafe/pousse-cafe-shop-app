@@ -6,11 +6,14 @@ import poussecafe.shop.commands.AddUnits;
 import poussecafe.shop.commands.CreateProduct;
 import poussecafe.shop.model.product.Product;
 import poussecafe.shop.model.product.ProductId;
+import poussecafe.shop.process.ProductManagement;
+import poussecafe.test.ProcessCovered;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.Assert.assertTrue;
 
+@ProcessCovered(ProductManagement.class)
 public class ProductManagementTest extends ShopTest {
 
     private ProductId productId;

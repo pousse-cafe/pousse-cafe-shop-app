@@ -1,5 +1,8 @@
 package poussecafe.shop.model.message;
 
+/**
+ * The type of message to send.
+ */
 public enum ContentType {
     ORDER_REJECTED,
     ORDER_READY_FOR_SETTLEMENT,

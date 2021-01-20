@@ -5,9 +5,12 @@ import poussecafe.sample.ShopTest;
 import poussecafe.shop.commands.CreateCustomer;
 import poussecafe.shop.model.customer.Customer.Repository;
 import poussecafe.shop.model.customer.CustomerId;
+import poussecafe.shop.process.CustomerCreation;
+import poussecafe.test.ProcessCovered;
 
 import static org.junit.Assert.assertTrue;
 
+@ProcessCovered(CustomerCreation.class)
 public class CustomerCreationTest extends ShopTest {
 
     private CustomerId customerId;

@@ -14,11 +14,11 @@
     <name>Pousse-Café - Shop App</name>
 
     <properties>
-        <spring-boot.version>2.4.0</spring-boot.version>
-        <pousse-cafe.version>0.24.0</pousse-cafe.version>
+        <spring-boot.version>2.4.2</spring-boot.version>
+        <pousse-cafe.version>0.26.0-SNAPSHOT</pousse-cafe.version>
         <pousse-cafe-spring.version>0.15.0</pousse-cafe-spring.version>
-        <pousse-cafe-spring-jpa.version>0.3.0</pousse-cafe-spring-jpa.version>
-        <pousse-cafe-maven-plugin.version>0.19.0</pousse-cafe-maven-plugin.version>
+        <pousse-cafe-spring-jpa.version>0.4.0</pousse-cafe-spring-jpa.version>
+        <pousse-cafe-maven-plugin.version>0.20.0-SNAPSHOT</pousse-cafe-maven-plugin.version>
     </properties>
 
     <dependencies>
@@ -100,6 +100,7 @@
                     </storageAdapters>
                     <basePackage>poussecafe.shop</basePackage>
                     <codeFormatterProfile>${project.basedir}/codeFormatterProfile.xml</codeFormatterProfile>
+                    <domainName>Shop</domainName>
                 </configuration>
                 <executions>
                     <execution>
@@ -108,9 +109,6 @@
                             <goal>generate-doc</goal>
                         </goals>
                         <phase>package</phase>
-                        <configuration>
-                            <domainName>Shop</domainName>
-                        </configuration>
                     </execution>
                     <execution>
                         <id>validate</id>

@@ -12,6 +12,9 @@ import poussecafe.shop.process.Messaging;
 
 public class MessageFactory extends AggregateFactory<MessageId, MessageRoot, MessageRoot.Attributes> {
 
+    /**
+     * Creates a new Message upon Order rejection.
+     */
     @MessageListener(processes = Messaging.class)
     public MessageRoot buildMessage(OrderRejected event) {
         MessageRoot message = buildMessage(event.description().value().customerId());
@@ -25,6 +28,9 @@ public class MessageFactory extends AggregateFactory<MessageId, MessageRoot, Mes
         return message;
     }
 
+    /**
+     * Creates a new Message upon successful Order creation.
+     */
     @MessageListener(processes = Messaging.class)
     public MessageRoot buildMessage(OrderCreated event) {
         MessageRoot message = buildMessage(event.orderId().value().getCustomerId());
@@ -32,6 +38,9 @@ public class MessageFactory extends AggregateFactory<MessageId, MessageRoot, Mes
         return message;
     }
 
+    /**
+     * Creates a new Message upon Order settlement.
+     */
     @MessageListener(processes = Messaging.class)
     public MessageRoot buildMessage(OrderSettled event) {
         MessageRoot message = buildMessage(event.orderId().value().getCustomerId());
@@ -39,6 +48,9 @@ public class MessageFactory extends AggregateFactory<MessageId, MessageRoot, Mes
         return message;
     }
 
+    /**
+     * Creates a new Message upon Order shipment.
+     */
     @MessageListener(processes = Messaging.class)
     public MessageRoot buildMessage(OrderReadyForShipping event) {
         MessageRoot message = buildMessage(event.orderId().value().getCustomerId());

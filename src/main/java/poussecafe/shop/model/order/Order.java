@@ -18,11 +18,18 @@ import poussecafe.shop.process.OrderPlacement;
 import poussecafe.shop.process.OrderSettlement;
 import poussecafe.shop.process.OrderShippment;
 
+/**
+ * <p>Orders are placed by Customers when they buy a given number of units of a given Product. An Order is first created,
+ * then settled (upon receivable of Customer's payment), and finally shipped (when passed over to transporter).</p>
+ */
 @Aggregate
 public class Order {
 
     public static class Factory extends AggregateFactory<OrderId, Root, Root.Attributes> {
 
+        /**
+         * Creates an Order is it was successfully placed.
+         */
         @MessageListener(processes = OrderPlacement.class)
         public Root buildPlacedOrder(OrderPlaced event) {
             OrderDescription description = event.description().value();
@@ -43,6 +50,9 @@ public class Order {
             issue(event);
         }
 
+        /**
+         * Settles the Order.
+         */
         @MessageListener(runner = SettleRunner.class, processes = OrderSettlement.class)
         @ProducesEvent(OrderSettled.class)
         public void settle(SettleOrder command) {
@@ -51,6 +61,9 @@ public class Order {
             issue(event);
         }
 
+        /**
+         * Marks the Order as ready to be shipped.
+         */
         @MessageListener(runner = ShipOrderRunner.class, processes = OrderShippment.class)
         @ProducesEvent(OrderReadyForShipping.class)
         public void ship(ShipOrder command) {

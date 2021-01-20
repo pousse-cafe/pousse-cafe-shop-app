@@ -1,9 +1,14 @@
 package poussecafe.shop.model.order;
 
+import poussecafe.domain.ValueObject;
 import poussecafe.shop.model.customer.CustomerId;
 import poussecafe.shop.model.product.ProductId;
 
-public class OrderId {
+/**
+ * An Order identifier consists in a Product ID, a customer ID and a reference enabling a Customer to place several
+ * orders for the same Product and still distinguish them.
+ */
+public class OrderId implements ValueObject {
 
     private ProductId productId;
 

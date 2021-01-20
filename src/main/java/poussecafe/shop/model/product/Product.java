@@ -19,11 +19,18 @@ import poussecafe.shop.model.product.Product.Root.Attributes;
 import poussecafe.shop.process.OrderPlacement;
 import poussecafe.shop.process.ProductManagement;
 
+/**
+ * <p>A Product is a good or service that can be bought by a Customer. Customer have to place an Order when buying units
+ * of a given Product. The number of available units may be increased and is decreased with successfully placed Orders.</p>
+ */
 @Aggregate
 public class Product {
 
     public static class Factory extends AggregateFactory<ProductId, Root, Root.Attributes> {
 
+        /**
+         * Creates a new Product with no stock (i.e. 0 units available).
+         */
         @MessageListener(processes = ProductManagement.class)
         public Root buildProductWithNoStock(CreateProduct command) {
             Root product = newAggregateWithId(command.productId().value());
@@ -35,6 +42,9 @@ public class Product {
 
     public static class Root extends AggregateRoot<ProductId, Root.Attributes> {
 
+        /**
+         * Adds available units to the Product.
+         */
         @MessageListener(runner = AddUnitsRunner.class, processes = ProductManagement.class)
         public void addUnits(AddUnits command) {
             int units = command.units().value();
@@ -45,6 +55,9 @@ public class Product {
             attributes().totalUnits().value(attributes().totalUnits().value() + units);
         }
 
+        /**
+         * Tries to place an order if there are enough units available.
+         */
         @MessageListener(runner = PlaceOrderRunner.class, processes = OrderPlacement.class)
         @ProducesEvent(value = OrderRejected.class, required = false)
         @ProducesEvent(value = OrderPlaced.class, required = false)
@@ -80,5 +93,9 @@ public class Product {
         public ProductDataAccess<Root.Attributes> dataAccess() {
             return (ProductDataAccess<Attributes>) super.dataAccess();
         }
+    }
+
+    private Product() {
+
     }
 }

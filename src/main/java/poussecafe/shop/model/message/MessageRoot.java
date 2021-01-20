@@ -8,6 +8,9 @@ import poussecafe.domain.EntityAttributes;
 import poussecafe.shop.model.customer.CustomerId;
 import poussecafe.shop.model.events.MessageCreated;
 
+/**
+ * <p>Messages are sent to Customers to notify them about an event.</p>
+ */
 @Aggregate(
   factory = MessageFactory.class,
   repository = MessageRepository.class

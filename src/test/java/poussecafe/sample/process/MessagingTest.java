@@ -7,14 +7,17 @@ import poussecafe.shop.model.customer.CustomerId;
 import poussecafe.shop.model.events.OrderRejected;
 import poussecafe.shop.model.events.adapters.OrderRejectedData;
 import poussecafe.shop.model.message.ContentType;
-import poussecafe.shop.model.message.MessageRoot;
 import poussecafe.shop.model.message.MessageRepository;
+import poussecafe.shop.model.message.MessageRoot;
 import poussecafe.shop.model.order.OrderDescription;
 import poussecafe.shop.model.product.ProductId;
+import poussecafe.shop.process.Messaging;
+import poussecafe.test.ProcessCovered;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 
+@ProcessCovered(Messaging.class)
 public class MessagingTest extends ShopTest {
 
     private CustomerId customerId;
