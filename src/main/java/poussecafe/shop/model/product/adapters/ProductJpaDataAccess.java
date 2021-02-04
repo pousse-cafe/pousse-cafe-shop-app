@@ -17,7 +17,7 @@ import poussecafe.spring.jpa.storage.SpringJpaStorage;
 public class ProductJpaDataAccess extends JpaDataAccess<ProductId, ProductData, String> implements ProductDataAccess<ProductData> {
 
     @Autowired
-    private ProductJpaRepository repository;
+    private ProductDataJpaRepository repository;
 
     @Override
     protected String convertId(ProductId id) {
