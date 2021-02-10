@@ -9,7 +9,7 @@ import poussecafe.shop.model.customer.CustomerId;
 
 @SuppressWarnings("serial")
 @Entity
-public class CustomerData implements Root.Attributes, Serializable {
+public class CustomerAttributes implements Root.Attributes, Serializable {
 
     @Override
     public Attribute<CustomerId> identifier() {

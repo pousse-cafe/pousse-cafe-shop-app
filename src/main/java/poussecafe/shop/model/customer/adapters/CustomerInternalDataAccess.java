@@ -8,7 +8,7 @@ import poussecafe.storage.internal.InternalStorage;
 
 @DataAccessImplementation(
     aggregateRoot = Root.class,
-    dataImplementation = CustomerData.class,
+    dataImplementation = CustomerAttributes.class,
     storageName = InternalStorage.NAME
 )
 public class CustomerInternalDataAccess extends InternalDataAccess<CustomerId, Root.Attributes> {

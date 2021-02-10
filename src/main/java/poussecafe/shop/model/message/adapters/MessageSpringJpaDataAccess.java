@@ -12,13 +12,13 @@ import poussecafe.spring.jpa.storage.SpringJpaStorage;
 
 @DataAccessImplementation(
         aggregateRoot = MessageRoot.class,
-        dataImplementation = MessageData.class,
+        dataImplementation = MessageAttributes.class,
         storageName = SpringJpaStorage.NAME
 )
-public class MessageJpaDataAccess extends JpaDataAccess<MessageId, MessageData, String> implements poussecafe.shop.model.message.MessageDataAccess<MessageData> {
+public class MessageSpringJpaDataAccess extends JpaDataAccess<MessageId, MessageAttributes, String> implements poussecafe.shop.model.message.MessageDataAccess<MessageAttributes> {
 
     @Autowired
-    private MessageDataJpaRepository repository;
+    private MessageAttributesJpaRepository repository;
 
     @Override
     protected String convertId(MessageId id) {
@@ -26,12 +26,12 @@ public class MessageJpaDataAccess extends JpaDataAccess<MessageId, MessageData, 
     }
 
     @Override
-    protected JpaRepository<MessageData, String> jpaRepository() {
+    protected JpaRepository<MessageAttributes, String> jpaRepository() {
         return repository;
     }
 
     @Override
-    public List<MessageData> findByCustomer(CustomerId customerId) {
+    public List<MessageAttributes> findByCustomer(CustomerId customerId) {
         return repository.findByCustomerId(customerId);
     }
 

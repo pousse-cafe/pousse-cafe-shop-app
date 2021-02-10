@@ -11,15 +11,15 @@ import poussecafe.spring.jpa.storage.SpringJpaStorage;
 
 @DataAccessImplementation(
     aggregateRoot = Root.class,
-    dataImplementation = CustomerData.class,
+    dataImplementation = CustomerAttributes.class,
     storageName = SpringJpaStorage.NAME
 )
-public class CustomerJpaDataAccess
-extends JpaDataAccess<CustomerId, CustomerData, String>
-implements CustomerDataAccess<CustomerData> {
+public class CustomerSpringJpaDataAccess
+extends JpaDataAccess<CustomerId, CustomerAttributes, String>
+implements CustomerDataAccess<CustomerAttributes> {
 
     @Autowired
-    private CustomerDataJpaRepository repository;
+    private CustomerAttributesJpaRepository repository;
 
     @Override
     protected String convertId(CustomerId id) {
@@ -27,7 +27,7 @@ implements CustomerDataAccess<CustomerData> {
     }
 
     @Override
-    protected JpaRepository<CustomerData, String> jpaRepository() {
+    protected JpaRepository<CustomerAttributes, String> jpaRepository() {
         return repository;
     }
 }

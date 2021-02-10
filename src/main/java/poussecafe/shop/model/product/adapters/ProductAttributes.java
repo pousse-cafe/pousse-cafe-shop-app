@@ -10,7 +10,7 @@ import poussecafe.shop.model.product.ProductId;
 
 @SuppressWarnings("serial")
 @Entity
-public class ProductData implements Product.Root.Attributes, Serializable {
+public class ProductAttributes implements Product.Root.Attributes, Serializable {
 
     @Override
     public Attribute<ProductId> identifier() {

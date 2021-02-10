@@ -10,7 +10,7 @@ import poussecafe.shop.model.order.OrderId;
 
 @SuppressWarnings("serial")
 @Entity
-public class OrderData implements Root.Attributes, Serializable {
+public class OrderAttributes implements Root.Attributes, Serializable {
 
     @Override
     public Attribute<OrderId> identifier() {

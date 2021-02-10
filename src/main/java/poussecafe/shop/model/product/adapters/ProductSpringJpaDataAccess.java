@@ -11,13 +11,13 @@ import poussecafe.spring.jpa.storage.SpringJpaStorage;
 
 @DataAccessImplementation(
         aggregateRoot = Product.Root.class,
-        dataImplementation = ProductData.class,
+        dataImplementation = ProductAttributes.class,
         storageName = SpringJpaStorage.NAME
 )
-public class ProductJpaDataAccess extends JpaDataAccess<ProductId, ProductData, String> implements ProductDataAccess<ProductData> {
+public class ProductSpringJpaDataAccess extends JpaDataAccess<ProductId, ProductAttributes, String> implements ProductDataAccess<ProductAttributes> {
 
     @Autowired
-    private ProductDataJpaRepository repository;
+    private ProductAttributesJpaRepository repository;
 
     @Override
     protected String convertId(ProductId id) {
@@ -25,7 +25,7 @@ public class ProductJpaDataAccess extends JpaDataAccess<ProductId, ProductData, 
     }
 
     @Override
-    protected JpaRepository<ProductData, String> jpaRepository() {
+    protected JpaRepository<ProductAttributes, String> jpaRepository() {
         return repository;
     }
 }

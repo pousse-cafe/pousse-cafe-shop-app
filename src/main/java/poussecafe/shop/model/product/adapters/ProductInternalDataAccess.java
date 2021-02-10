@@ -9,11 +9,11 @@ import poussecafe.storage.internal.InternalStorage;
 
 @DataAccessImplementation(
     aggregateRoot = Product.Root.class,
-    dataImplementation = ProductData.class,
+    dataImplementation = ProductAttributes.class,
     storageName = InternalStorage.NAME
 )
 public class ProductInternalDataAccess
-extends InternalDataAccess<ProductId, ProductData>
-implements ProductDataAccess<ProductData> {
+extends InternalDataAccess<ProductId, ProductAttributes>
+implements ProductDataAccess<ProductAttributes> {
 
 }

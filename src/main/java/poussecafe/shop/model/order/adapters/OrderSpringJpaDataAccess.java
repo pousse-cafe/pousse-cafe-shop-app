@@ -10,13 +10,13 @@ import poussecafe.spring.jpa.storage.SpringJpaStorage;
 
 @DataAccessImplementation(
         aggregateRoot = Root.class,
-        dataImplementation = OrderData.class,
+        dataImplementation = OrderAttributes.class,
         storageName = SpringJpaStorage.NAME
 )
-public class OrderJpaDataAccess extends JpaDataAccess<OrderId, OrderData, OrderIdData> implements poussecafe.shop.model.order.OrderDataAccess<OrderData> {
+public class OrderSpringJpaDataAccess extends JpaDataAccess<OrderId, OrderAttributes, OrderIdData> implements poussecafe.shop.model.order.OrderDataAccess<OrderAttributes> {
 
     @Autowired
-    private OrderDataJpaRepository repository;
+    private OrderAttributesJpaRepository repository;
 
     @Override
     protected OrderIdData convertId(OrderId id) {
@@ -24,7 +24,7 @@ public class OrderJpaDataAccess extends JpaDataAccess<OrderId, OrderData, OrderI
     }
 
     @Override
-    protected JpaRepository<OrderData, OrderIdData> jpaRepository() {
+    protected JpaRepository<OrderAttributes, OrderIdData> jpaRepository() {
         return repository;
     }
 

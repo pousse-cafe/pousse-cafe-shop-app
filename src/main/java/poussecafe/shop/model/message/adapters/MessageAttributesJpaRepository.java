@@ -4,7 +4,7 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import poussecafe.shop.model.customer.CustomerId;
 
-public interface MessageDataJpaRepository extends JpaRepository<MessageData, String> {
+public interface MessageAttributesJpaRepository extends JpaRepository<MessageAttributes, String> {
 
-    List<MessageData> findByCustomerId(CustomerId customerId);
+    List<MessageAttributes> findByCustomerId(CustomerId customerId);
 }

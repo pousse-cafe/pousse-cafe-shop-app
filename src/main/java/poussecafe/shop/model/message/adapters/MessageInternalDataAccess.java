@@ -13,18 +13,18 @@ import static java.util.Arrays.asList;
 
 @DataAccessImplementation(
     aggregateRoot = MessageRoot.class,
-    dataImplementation = MessageData.class,
+    dataImplementation = MessageAttributes.class,
     storageName = InternalStorage.NAME
 )
-public class MessageInternalDataAccess extends InternalDataAccess<MessageId, MessageData> implements MessageDataAccess<MessageData> {
+public class MessageInternalDataAccess extends InternalDataAccess<MessageId, MessageAttributes> implements MessageDataAccess<MessageAttributes> {
 
     @Override
-    protected List<Object> extractIndexedData(MessageData data) {
+    protected List<Object> extractIndexedData(MessageAttributes data) {
         return asList(data.customerId().value());
     }
 
     @Override
-    public List<MessageData> findByCustomer(CustomerId customerId) {
+    public List<MessageAttributes> findByCustomer(CustomerId customerId) {
         return findBy(customerId);
     }
 
