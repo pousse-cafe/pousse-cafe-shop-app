@@ -18,7 +18,7 @@
         <pousse-cafe.version>0.27.0-SNAPSHOT</pousse-cafe.version>
         <pousse-cafe-spring.version>0.15.0</pousse-cafe-spring.version>
         <pousse-cafe-spring-jpa.version>0.5.0-SNAPSHOT</pousse-cafe-spring-jpa.version>
-        <pousse-cafe-maven-plugin.version>0.20.0</pousse-cafe-maven-plugin.version>
+        <pousse-cafe-maven-plugin.version>0.21.0-SNAPSHOT</pousse-cafe-maven-plugin.version>
     </properties>
 
     <dependencies>
@@ -95,8 +95,8 @@
                 <version>${pousse-cafe-maven-plugin.version}</version>
                 <configuration>
                     <storageAdapters>
-                        <storageAdapter>internal</storageAdapter>
-                        <storageAdapter>spring-jpa</storageAdapter>
+                        <storageAdapter>Internal</storageAdapter>
+                        <storageAdapter>SpringJpa</storageAdapter>
                     </storageAdapters>
                     <basePackage>poussecafe.shop</basePackage>
                     <codeFormatterProfile>${project.basedir}/codeFormatterProfile.xml</codeFormatterProfile>
