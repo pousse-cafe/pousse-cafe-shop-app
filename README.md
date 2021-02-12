@@ -10,6 +10,10 @@ are exchanged using Pousse-Café's embedded messaging.
 - `poussecafe.shop.api` package and its sub-packages contain the controllers and views implementing the REST API
 - `poussecafe.shop.model` package and its sub-packages contain the aggregates and their implementation
 
+If you are using [Eclipse IDE](https://www.eclipse.org/ide/), there is a
+[plugin-in](https://github.com/pousse-cafe/pousse-cafe-eclipse-plugin) available easing the navigation in a
+Pousse-Café project.
+
 # Test the app
 
 1. Build and launch the app with Maven: `mvn spring-boot:run`
