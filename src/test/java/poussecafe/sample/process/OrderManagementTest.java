@@ -7,73 +7,81 @@ import poussecafe.shop.model.customer.CustomerId;
 import poussecafe.shop.model.order.Order.Repository;
 import poussecafe.shop.model.order.OrderDescription;
 import poussecafe.shop.model.order.OrderId;
+import poussecafe.shop.model.product.Product;
 import poussecafe.shop.model.product.ProductId;
+import poussecafe.shop.model.product.adapters.ProductAttributes;
 import poussecafe.shop.process.OrderPlacement;
+import poussecafe.test.DataSet;
 import poussecafe.test.ProcessCovered;
 
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 @ProcessCovered(OrderPlacement.class)
 public class OrderManagementTest extends ShopTest {
 
-    private CustomerId customerId;
-
-    private ProductId productId;
-
-    private OrderDescription description;
-
     @Test
     public void placingOrderCreatesOrder() {
-        givenCustomer();
-        givenProductWithUnits(true);
-        whenPlacingOrder();
-        thenOrderCreated();
+        given(productWithUnits(true));
+        givenPlaceOrderCommand();
+        when(placeOrder);
+        thenOrderCreated(true);
     }
 
-    private void givenCustomer() {
-        customerId = new CustomerId("customer-id");
-    }
-
-    private void givenProductWithUnits(boolean withUnits) {
-        productId = new ProductId("product-1");
+    private DataSet productWithUnits(boolean withUnits) {
+        var builder = new DataSet.Builder();
         if (withUnits) {
-            loadDataFile("/data/placingOrderProductWithUnits.json");
+            builder.withAggregateData(Product.Root.class, productAttributesWithUnits(10, 10));
         } else {
-            loadDataFile("/data/placingOrderProductWithoutUnits.json");
+            builder.withAggregateData(Product.Root.class, productAttributesWithUnits(10, 0));
         }
+        return builder.build();
     }
 
-    private void whenPlacingOrder() {
-        PlaceOrder command = newCommand(PlaceOrder.class);
-        command.productId().value(productId);
+    private ProductAttributes productAttributesWithUnits(int total, int available) {
+        var attributes = new ProductAttributes();
+        attributes.identifier().value(productId);
+        attributes.totalUnits().value(total);
+        attributes.availableUnits().value(available);
+        return attributes;
+    }
+
+    private ProductId productId = new ProductId("product-1");
+
+    private void givenPlaceOrderCommand() {
+        placeOrder = newCommand(PlaceOrder.class);
+        placeOrder.productId().value(productId);
         description = new OrderDescription.Builder()
                 .customerId(customerId)
                 .reference("ref")
                 .units(1)
                 .build();
-        command.description().value(description);
-        submitCommand(command);
+        placeOrder.description().value(description);
     }
 
-    private void thenOrderCreated() {
-        assertTrue(orderRepository.getOptional(orderId()).isPresent());
+    private OrderDescription description;
+
+    private CustomerId customerId = new CustomerId("customer-id");
+
+    private PlaceOrder placeOrder;
+
+    private void thenOrderCreated(boolean expected) {
+        var description = placeOrder.description().value();
+        var orderId = new OrderId(productId, customerId, description.reference());
+        if(expected) {
+            assertTrue(orderRepository.getOptional(orderId).isPresent());
+        } else {
+            assertFalse(orderRepository.getOptional(orderId).isPresent());
+        }
     }
 
     private Repository orderRepository;
 
-    private OrderId orderId() {
-        return new OrderId(productId, description.customerId(), description.reference());
-    }
-
     @Test
     public void placingOrderWithNotEnoughUnitsDoesNotCreatesOrder() {
-        givenCustomer();
-        givenProductWithUnits(false);
-        whenPlacingOrder();
-        thenNoOrderCreated();
-    }
-
-    private void thenNoOrderCreated() {
-        assertTrue(orderRepository.getOptional(orderId()).isEmpty());
+        given(productWithUnits(false));
+        givenPlaceOrderCommand();
+        when(placeOrder);
+        thenOrderCreated(false);
     }
 }
