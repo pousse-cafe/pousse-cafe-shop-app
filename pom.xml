@@ -17,8 +17,8 @@
         <spring-boot.version>2.4.2</spring-boot.version>
         <pousse-cafe.version>0.28.0-SNAPSHOT</pousse-cafe.version>
         <pousse-cafe-spring.version>0.15.0</pousse-cafe-spring.version>
-        <pousse-cafe-spring-jpa.version>0.5.0</pousse-cafe-spring-jpa.version>
-        <pousse-cafe-maven-plugin.version>0.21.0</pousse-cafe-maven-plugin.version>
+        <pousse-cafe-spring-jpa.version>0.6.0-SNAPSHOT</pousse-cafe-spring-jpa.version>
+        <pousse-cafe-maven-plugin.version>0.22.0-SNAPSHOT</pousse-cafe-maven-plugin.version>
     </properties>
 
     <dependencies>

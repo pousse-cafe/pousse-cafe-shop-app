@@ -2,7 +2,6 @@ package poussecafe.shop.model.message;
 
 import poussecafe.attribute.Attribute;
 import poussecafe.discovery.Aggregate;
-import poussecafe.discovery.ProducesEvent;
 import poussecafe.domain.AggregateRoot;
 import poussecafe.domain.EntityAttributes;
 import poussecafe.shop.model.customer.CustomerId;
@@ -17,7 +16,6 @@ import poussecafe.shop.model.events.MessageCreated;
 )
 public class MessageRoot extends AggregateRoot<MessageId, MessageRoot.Attributes> {
 
-    @ProducesEvent(value = MessageCreated.class, consumedByExternal = "Communication")
     @Override
     public void onAdd() {
         MessageCreated event = newDomainEvent(MessageCreated.class);

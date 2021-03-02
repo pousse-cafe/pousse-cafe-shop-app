@@ -31,6 +31,7 @@ public class Order {
          * Creates an Order is it was successfully placed.
          */
         @MessageListener(processes = OrderPlacement.class)
+        @ProducesEvent(OrderCreated.class)
         public Root buildPlacedOrder(OrderPlaced event) {
             OrderDescription description = event.description().value();
             OrderId id = new OrderId(event.productId().value(), description.customerId(), description.reference());
@@ -42,7 +43,6 @@ public class Order {
 
     public static class Root extends AggregateRoot<OrderId, Root.Attributes> {
 
-        @ProducesEvent(OrderCreated.class)
         @Override
         public void onAdd() {
             OrderCreated event = newDomainEvent(OrderCreated.class);
