@@ -1,11 +1,12 @@
 package poussecafe.shop.model.order.adapters;
 
 import java.io.Serializable;
+import poussecafe.attribute.AutoAdapter;
 import poussecafe.shop.model.customer.CustomerId;
 import poussecafe.shop.model.order.OrderDescription;
 
 @SuppressWarnings("serial")
-public class OrderDescriptionData implements Serializable {
+public class OrderDescriptionData implements Serializable, AutoAdapter<OrderDescription> {
 
     public static OrderDescriptionData adapt(OrderDescription description) {
         OrderDescriptionData data = new OrderDescriptionData();
@@ -21,6 +22,7 @@ public class OrderDescriptionData implements Serializable {
 
     private int units;
 
+    @Override
     public OrderDescription adapt() {
         return new OrderDescription.Builder()
                 .customerId(new CustomerId(customerId))

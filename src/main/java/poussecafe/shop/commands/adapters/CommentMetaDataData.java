@@ -2,12 +2,13 @@ package poussecafe.shop.commands.adapters;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import poussecafe.attribute.AutoAdapter;
 import poussecafe.shop.model.comment.CommentMetaData;
 import poussecafe.shop.model.customer.CustomerId;
 import poussecafe.shop.model.product.ProductId;
 
 @SuppressWarnings("serial")
-public class CommentMetaDataData implements Serializable {
+public class CommentMetaDataData implements Serializable, AutoAdapter<CommentMetaData> {
 
     public static CommentMetaDataData adapt(CommentMetaData metaData) {
         CommentMetaDataData data = new CommentMetaDataData();
@@ -23,6 +24,7 @@ public class CommentMetaDataData implements Serializable {
 
     String productId;
 
+    @Override
     public CommentMetaData adapt() {
         return new CommentMetaData.Builder()
                 .creationDateTime(LocalDateTime.parse(creationDateTime))
