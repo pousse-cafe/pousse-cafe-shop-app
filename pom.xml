@@ -4,21 +4,21 @@
     <parent>
         <groupId>org.pousse-cafe-framework</groupId>
         <artifactId>pousse-cafe</artifactId>
-        <version>0.29.0-SNAPSHOT</version>
+        <version>0.29.0</version>
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
     <artifactId>pousse-cafe-shop-app</artifactId>
-    <version>0.11.0-SNAPSHOT</version>
+    <version>0.11.0</version>
 
     <name>Pousse-Café - Shop App</name>
 
     <properties>
         <spring-boot.version>2.4.2</spring-boot.version>
-        <pousse-cafe.version>0.29.0-SNAPSHOT</pousse-cafe.version>
+        <pousse-cafe.version>0.29.0</pousse-cafe.version>
         <pousse-cafe-spring.version>0.15.0</pousse-cafe-spring.version>
         <pousse-cafe-spring-jpa.version>0.6.0</pousse-cafe-spring-jpa.version>
-        <pousse-cafe-maven-plugin.version>0.23.0-SNAPSHOT</pousse-cafe-maven-plugin.version>
+        <pousse-cafe-maven-plugin.version>0.23.0</pousse-cafe-maven-plugin.version>
     </properties>
 
     <dependencies>
