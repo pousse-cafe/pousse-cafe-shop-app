@@ -1,9 +1,10 @@
 package poussecafe.shop.model.comment.adapters;
 
 import java.io.Serializable;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Version;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Version;
 import poussecafe.attribute.Attribute;
 import poussecafe.shop.commands.adapters.CommentMetaDataData;
 import poussecafe.shop.model.comment.Comment.Root;

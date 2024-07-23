@@ -1,8 +1,9 @@
 package poussecafe.shop.model.product.adapters;
 
 import java.io.Serializable;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 import poussecafe.attribute.Attribute;
 import poussecafe.attribute.AttributeBuilder;
 import poussecafe.shop.model.product.Product;

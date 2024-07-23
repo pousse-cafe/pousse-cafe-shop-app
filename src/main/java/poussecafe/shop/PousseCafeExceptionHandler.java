@@ -5,9 +5,10 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
+
+import jakarta.servlet.http.HttpServletRequest;
 import poussecafe.exception.NotFoundException;
 import poussecafe.shop.api.view.ErrorView;
-import javax.servlet.http.HttpServletRequest;
 
 @ControllerAdvice
 public class PousseCafeExceptionHandler {
