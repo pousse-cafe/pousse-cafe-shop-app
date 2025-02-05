@@ -2,10 +2,10 @@ package poussecafe.sample.process;
 
 import org.junit.Test;
 import poussecafe.sample.ShopTest;
-import poussecafe.shop.commands.CreateCustomer;
-import poussecafe.shop.model.customer.Customer.Repository;
-import poussecafe.shop.model.customer.CustomerId;
-import poussecafe.shop.process.CustomerCreation;
+import poussecafe.shop.core.commands.CreateCustomer;
+import poussecafe.shop.core.model.customer.CustomerId;
+import poussecafe.shop.core.model.customer.Customer.Repository;
+import poussecafe.shop.core.process.CustomerCreation;
 import poussecafe.test.ProcessCovered;
 
 import static org.junit.Assert.assertTrue;

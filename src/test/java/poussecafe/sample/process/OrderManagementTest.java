@@ -2,15 +2,15 @@ package poussecafe.sample.process;
 
 import org.junit.Test;
 import poussecafe.sample.ShopTest;
-import poussecafe.shop.commands.PlaceOrder;
-import poussecafe.shop.model.customer.CustomerId;
-import poussecafe.shop.model.order.Order.Repository;
-import poussecafe.shop.model.order.OrderDescription;
-import poussecafe.shop.model.order.OrderId;
-import poussecafe.shop.model.product.Product;
-import poussecafe.shop.model.product.ProductId;
-import poussecafe.shop.model.product.adapters.ProductAttributes;
-import poussecafe.shop.process.OrderPlacement;
+import poussecafe.shop.core.commands.PlaceOrder;
+import poussecafe.shop.core.model.customer.CustomerId;
+import poussecafe.shop.core.model.order.OrderDescription;
+import poussecafe.shop.core.model.order.OrderId;
+import poussecafe.shop.core.model.order.Order.Repository;
+import poussecafe.shop.core.model.product.Product;
+import poussecafe.shop.core.model.product.ProductId;
+import poussecafe.shop.core.model.product.adapters.ProductAttributes;
+import poussecafe.shop.core.process.OrderPlacement;
 import poussecafe.test.DataSet;
 import poussecafe.test.ProcessCovered;
 

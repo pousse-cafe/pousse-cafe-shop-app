@@ -1,7 +1,7 @@
 package poussecafe.sample;
 
 import poussecafe.runtime.Runtime;
-import poussecafe.shop.ShopBundle;
+import poussecafe.shop.core.ShopBundle;
 import poussecafe.test.PousseCafeTest;
 
 public abstract class ShopTest extends PousseCafeTest {

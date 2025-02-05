@@ -2,11 +2,11 @@ package poussecafe.sample.process;
 
 import org.junit.Test;
 import poussecafe.sample.ShopTest;
-import poussecafe.shop.commands.AddUnits;
-import poussecafe.shop.commands.CreateProduct;
-import poussecafe.shop.model.product.Product;
-import poussecafe.shop.model.product.ProductId;
-import poussecafe.shop.process.ProductManagement;
+import poussecafe.shop.core.commands.AddUnits;
+import poussecafe.shop.core.commands.CreateProduct;
+import poussecafe.shop.core.model.product.Product;
+import poussecafe.shop.core.model.product.ProductId;
+import poussecafe.shop.core.process.ProductManagement;
 import poussecafe.test.ProcessCovered;
 
 import static org.hamcrest.CoreMatchers.is;
